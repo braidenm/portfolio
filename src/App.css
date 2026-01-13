@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure proper spacing for sections */
+section {
+  scroll-margin-top: 80px;
+}
