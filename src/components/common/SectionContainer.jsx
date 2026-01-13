@@ -1,10 +1,10 @@
 import React from 'react';
 import { Box } from '@mui/material';
 
-const SectionContainer = ({ id, children, sx = {}, bgImage, bgOpacity = 0.5, darkOverlay = false, bgSize = 'cover' }) => {
+const SectionContainer = ({ id, children, sx = {}, bgImage, bgOpacity = 0.5, darkOverlay = false, bgSize = 'cover', whiteText = false }) => {
   const overlayColor = darkOverlay 
-    ? 'rgba(0, 0, 0, 0.4)' // Even lighter dark overlay
-    : 'rgba(255, 255, 255, 0.5)'; // Lighter light overlay
+    ? 'rgba(0, 0, 0, 0.6)' // Darker overlay for better contrast
+    : 'rgba(255, 255, 255, 0.6)'; // Slightly more opaque light overlay
 
   return (
     <Box
@@ -15,6 +15,9 @@ const SectionContainer = ({ id, children, sx = {}, bgImage, bgOpacity = 0.5, dar
         px: { xs: 2, sm: 3, md: 4 },
         position: 'relative',
         overflow: 'hidden',
+        ...(whiteText && {
+          color: { xs: 'inherit', md: 'white' }, // Only white text on desktop with backgrounds
+        }),
         ...(bgImage && {
           '&::before': {
             content: '""',

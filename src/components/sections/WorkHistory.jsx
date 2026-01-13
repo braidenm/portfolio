@@ -11,6 +11,8 @@ const WorkHistory = () => {
       bgImage="/images/experience.jpg" 
       bgOpacity={0.7}
       bgSize="100% auto"
+      darkOverlay={true}
+      whiteText={true}
       sx={{ bgcolor: 'background.paper' }}
     >
       <Container>

@@ -19,6 +19,8 @@ const Contact = () => {
       bgImage="/images/call-to-action-bg.jpg" 
       bgOpacity={0.7}
       bgSize="100% auto"
+      darkOverlay={true}
+      whiteText={true}
       sx={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: 'background.default' }}
     >
       <Container>

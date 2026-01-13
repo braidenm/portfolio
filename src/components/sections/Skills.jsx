@@ -8,7 +8,15 @@ import { skills } from '../../data/skills';
 const Skills = () => {
   return (
     <>
-      <SectionContainer id="skills" bgImage="/images/call-to-action-bg.jpg" bgOpacity={0.7} bgSize="100% auto" sx={{ bgcolor: 'background.default' }}>
+      <SectionContainer 
+        id="skills" 
+        bgImage="/images/call-to-action-bg.jpg" 
+        bgOpacity={0.7} 
+        bgSize="100% auto" 
+        darkOverlay={true}
+        whiteText={true}
+        sx={{ bgcolor: 'background.default' }}
+      >
         <Container>
           <Typography variant="h3" component="h2" align="center" gutterBottom sx={{ mb: 2 }}>
             Skills
@@ -16,8 +24,13 @@ const Skills = () => {
           <Typography
             variant="body1"
             align="center"
-            color="text.secondary"
-            sx={{ mb: 6, maxWidth: '800px', mx: 'auto', fontSize: { xs: '0.9rem', sm: '1rem' } }}
+            sx={{ 
+              mb: 6, 
+              maxWidth: '800px', 
+              mx: 'auto', 
+              fontSize: { xs: '0.9rem', sm: '1rem' },
+              color: { xs: 'text.secondary', md: 'rgba(255, 255, 255, 0.9)' }
+            }}
           >
             A comprehensive technical foundation built through rigorous full-stack education and years of architecting scalable, high-performance systems in enterprise environments.
           </Typography>

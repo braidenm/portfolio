@@ -6,7 +6,15 @@ import { personalInfo, education, certifications, experience } from '../../data/
 
 const AboutMe = () => {
   return (
-    <SectionContainer id="about" bgImage="/images/about-bg.jpg" bgOpacity={0.7} bgSize="100% auto" sx={{ bgcolor: 'background.default' }}>
+    <SectionContainer 
+      id="about" 
+      bgImage="/images/about-bg.jpg" 
+      bgOpacity={0.7} 
+      bgSize="100% auto" 
+      darkOverlay={true}
+      whiteText={true}
+      sx={{ bgcolor: 'background.default' }}
+    >
       <Container>
         <Typography variant="h3" component="h2" align="center" gutterBottom sx={{ mb: 2 }}>
           About Me
@@ -14,7 +22,14 @@ const AboutMe = () => {
         <Typography
           variant="body1"
           align="center"
-          sx={{ mb: 6, maxWidth: '900px', mx: 'auto', lineHeight: 1.6, fontSize: { xs: '0.9rem', sm: '1rem' } }}
+          sx={{ 
+            mb: 6, 
+            maxWidth: '900px', 
+            mx: 'auto', 
+            lineHeight: 1.6, 
+            fontSize: { xs: '0.9rem', sm: '1rem' },
+            color: { xs: 'text.secondary', md: 'white' } 
+          }}
         >
           {personalInfo.aboutMe}
         </Typography>

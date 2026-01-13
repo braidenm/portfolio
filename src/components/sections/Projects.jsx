@@ -18,6 +18,8 @@ const Projects = () => {
       bgImage="/images/certificate.jpg" 
       bgOpacity={0.7}
       bgSize="100% auto"
+      darkOverlay={true}
+      whiteText={true}
       sx={{ bgcolor: 'background.paper' }}
     >
       <Container>
@@ -27,8 +29,13 @@ const Projects = () => {
         <Typography
           variant="body1"
           align="center"
-          color="text.secondary"
-          sx={{ mb: 6, maxWidth: '800px', mx: 'auto', fontSize: { xs: '0.9rem', sm: '1rem' } }}
+          sx={{ 
+            mb: 6, 
+            maxWidth: '800px', 
+            mx: 'auto', 
+            fontSize: { xs: '0.9rem', sm: '1rem' },
+            color: { xs: 'text.secondary', md: 'rgba(255, 255, 255, 0.9)' }
+          }}
         >
           Explore my portfolio of applications and web projects. Each project demonstrates different aspects of my development skills.
         </Typography>
@@ -42,6 +49,13 @@ const Projects = () => {
               '& .MuiTab-root': {
                 textTransform: 'none',
                 fontWeight: 500,
+                color: { xs: 'inherit', md: 'white' },
+                '&.Mui-selected': {
+                  color: 'primary.light',
+                },
+              },
+              '& .MuiTabs-indicator': {
+                bgcolor: 'primary.light',
               },
             }}
           >
