@@ -47,6 +47,8 @@ jobs:
   dispatch:
     needs: build-and-push
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Dispatch update event to Infrastructure repo
         uses: peter-evans/repository-dispatch@v2
