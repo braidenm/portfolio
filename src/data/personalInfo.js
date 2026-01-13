@@ -7,7 +7,7 @@ export const personalInfo = {
   linkedin: 'https://www.linkedin.com/in/braiden-miller-64173015/',
   aboutMe: 'I am a Senior Software Engineer with a passion for architecting scalable microservices and solving complex distributed system problems. With a background that spans from high-stakes retail management to lead technical roles, I bring a unique blend of leadership, empathy, and technical rigor to every project. I specialize in event-driven architectures, performance optimization, and fostering a culture of high-quality, well-tested code. Whether it is migrating millions of records or experimenting with AI-driven development, I thrive on "stretch goals" and technical challenges that push the boundaries of what a system can handle.',
   heroText: 'Senior Software Engineer & Technical Leader',
-  heroDescription: 'Hello test - Specializing in high-performance Java/Kotlin microservices, event-driven systems with Kafka, and scalable search solutions using Elasticsearch. I lead by example, combining deep technical expertise with a commitment to mentoring and architectural excellence.',
+  heroDescription: 'Specializing in high-performance Java/Kotlin microservices, event-driven systems with Kafka, and scalable search solutions using Elasticsearch. I lead by example, combining deep technical expertise with a commitment to mentoring and architectural excellence.',
 };
 
 export const education = {
