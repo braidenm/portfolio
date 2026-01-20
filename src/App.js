@@ -9,7 +9,6 @@ import Footer from './components/layout/Footer';
 import ScrollToTop from './components/common/ScrollToTop';
 import Hero from './components/sections/Hero';
 import AboutMe from './components/sections/AboutMe';
-import Resume from './components/sections/Resume';
 import WorkHistory from './components/sections/WorkHistory';
 import Skills from './components/sections/Skills';
 import Projects from './components/sections/Projects';
@@ -23,7 +22,6 @@ const MainLayout = () => (
     <Box component="main" sx={{ flexGrow: 1 }}>
       <Hero />
       <AboutMe />
-      <Resume />
       <WorkHistory />
       <Skills />
       <Projects />
