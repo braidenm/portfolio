@@ -13,26 +13,46 @@ const theme = createTheme({
     h1: {
       fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
       fontWeight: 700,
+      lineHeight: 1.2,
+      letterSpacing: '-0.01562em',
     },
     h2: {
       fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
       fontWeight: 700,
+      lineHeight: 1.2,
+      letterSpacing: '-0.00833em',
     },
     h3: {
       fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
       fontWeight: 500,
+      lineHeight: 1.3,
+      letterSpacing: '0em',
     },
     h4: {
       fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
       fontWeight: 500,
+      lineHeight: 1.4,
+      letterSpacing: '0.00735em',
     },
     h5: {
       fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
       fontWeight: 400,
+      lineHeight: 1.5,
+      letterSpacing: '0em',
     },
     h6: {
       fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
       fontWeight: 400,
+      lineHeight: 1.6,
+      letterSpacing: '0.0075em',
+    },
+    body1: {
+      lineHeight: 1.6,
+      letterSpacing: '0.00938em',
+    },
+    body2: {
+      lineHeight: 1.6,
+      letterSpacing: '0.01071em',
     },
   },
   spacing: 8,

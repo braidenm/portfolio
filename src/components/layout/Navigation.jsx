@@ -15,7 +15,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { NAV_ITEMS } from '../../utils/constants';
 
-const Navigation = ({ scrolled }) => {
+const Navigation = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const theme = useTheme();
@@ -106,6 +106,7 @@ const Navigation = ({ scrolled }) => {
         <Button
           key={item.section}
           onClick={() => handleNavClick(item.section)}
+          aria-label={`Scroll to ${item.label} section`}
           sx={{
             color: activeSection === item.section ? 'primary.main' : 'white',
             fontWeight: activeSection === item.section ? 700 : 400,

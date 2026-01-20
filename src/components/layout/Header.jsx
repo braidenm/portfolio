@@ -35,6 +35,7 @@ const Header = () => {
             component={Link}
             to="/"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            aria-label="Back to top"
             sx={{
               display: 'flex',
               alignItems: 'center',
