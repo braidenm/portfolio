@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
 
 const SectionContainer = ({ id, children, sx = {}, bgImage, bgOpacity = 0.5, darkOverlay = false, bgSize = 'cover', whiteText = false }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    if (bgImage) {
+      const img = new Image();
+      img.src = bgImage;
+      img.onload = () => setImageLoaded(true);
+    }
+  }, [bgImage]);
+
   const overlayColor = darkOverlay 
     ? 'rgba(0, 0, 0, 0.6)' // Darker overlay for better contrast
     : 'rgba(255, 255, 255, 0.6)'; // Slightly more opaque light overlay
@@ -31,7 +41,8 @@ const SectionContainer = ({ id, children, sx = {}, bgImage, bgOpacity = 0.5, dar
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundAttachment: 'fixed',
-            opacity: bgOpacity,
+            opacity: imageLoaded ? bgOpacity : 0,
+            transition: 'opacity 1s ease-in-out',
             zIndex: 0,
             display: { xs: 'none', md: 'block' },
           },
@@ -43,6 +54,8 @@ const SectionContainer = ({ id, children, sx = {}, bgImage, bgOpacity = 0.5, dar
             right: 0,
             bottom: 0,
             bgcolor: overlayColor,
+            opacity: imageLoaded ? 1 : 0,
+            transition: 'opacity 1s ease-in-out',
             zIndex: 0,
             display: { xs: 'none', md: 'block' },
           },

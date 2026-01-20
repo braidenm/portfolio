@@ -9,3 +9,13 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+// Hide the initial loader once the app has rendered
+const loader = document.getElementById('initial-loader');
+if (loader) {
+  loader.classList.add('loader-hidden');
+  // Optional: remove from DOM after transition
+  setTimeout(() => {
+    loader.remove();
+  }, 500);
+}
