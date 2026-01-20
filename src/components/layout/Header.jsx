@@ -5,6 +5,7 @@ import {
   Typography,
   Box,
 } from '@mui/material';
+import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
 
 const Header = () => {
@@ -31,8 +32,9 @@ const Header = () => {
     >
         <Toolbar>
           <Box
-            component="a"
-            href="#home"
+            component={Link}
+            to="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             sx={{
               display: 'flex',
               alignItems: 'center',

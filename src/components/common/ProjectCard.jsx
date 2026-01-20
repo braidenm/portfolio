@@ -10,6 +10,7 @@ import {
   Stack,
 } from '@mui/material';
 import { GitHub, Launch } from '@mui/icons-material';
+import { Link as RouterLink } from 'react-router-dom';
 
 const ProjectCard = ({ project }) => {
   return (
@@ -81,9 +82,8 @@ const ProjectCard = ({ project }) => {
             <Button
               variant="contained"
               startIcon={<Launch />}
-              href={project.demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              component={RouterLink}
+              to="/under-construction"
               size="small"
               aria-label={`View ${project.title} demo`}
             >

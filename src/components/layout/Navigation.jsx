@@ -12,6 +12,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { NAV_ITEMS } from '../../utils/constants';
 
 const Navigation = ({ scrolled }) => {
@@ -19,8 +20,12 @@ const Navigation = ({ scrolled }) => {
   const [activeSection, setActiveSection] = useState('home');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (location.pathname !== '/') return;
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100;
       const windowHeight = window.innerHeight;
@@ -49,13 +54,19 @@ const Navigation = ({ scrolled }) => {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Call once on mount
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const handleNavClick = (section) => {
+    if (location.pathname !== '/') {
+      navigate(`/#${section}`);
+      // The scroll will be handled after navigation if we add a listener or use hash
+      return;
+    }
+
     const element = document.getElementById(section);
     if (element) {
       const offset = 80;
@@ -69,6 +80,25 @@ const Navigation = ({ scrolled }) => {
     }
     setMobileOpen(false);
   };
+
+  // Effect to handle hash scroll when coming back from other pages
+  useEffect(() => {
+    if (location.pathname === '/' && location.hash) {
+      const section = location.hash.replace('#', '');
+      setTimeout(() => {
+        const element = document.getElementById(section);
+        if (element) {
+          const offset = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+          });
+        }
+      }, 100);
+    }
+  }, [location]);
 
   const navItems = (
     <Box sx={{ display: 'flex', gap: 1 }}>
