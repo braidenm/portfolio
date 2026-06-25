@@ -1,5 +1,29 @@
 export const projects = [
   {
+    id: 'platform-media-transfer',
+    title: 'Platform Media Transfer',
+    description:
+      'A self-hosted photo and video sharing platform focused on resilient mobile uploads, share-link workflows, media derivatives, retention, and reliable downloads across desktop, Android, and iPhone.',
+    category: 'platform',
+    imageUrl: '/images/experience.jpg',
+    githubUrl: 'https://github.com/braidenm/platform-demo',
+    liveUrl: 'https://app.braidenmiller.com/media',
+    featured: true,
+    role: 'Full-stack platform engineering',
+    impact: 'Reliable 50+ file mobile upload batches with shareable media links',
+    technologies: [
+      'Kotlin',
+      'Spring Boot',
+      'React',
+      'TypeScript',
+      'PostgreSQL',
+      'Docker',
+      'Caddy',
+      'ffmpeg',
+      'Uppy/TUS',
+    ],
+  },
+  {
     id: 'volunteer-site',
     title: 'Full Stack Volunteer Site',
     description: 'A full stack web application for managing volunteer activities and events.',

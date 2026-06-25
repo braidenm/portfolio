@@ -13,18 +13,18 @@ const Projects = () => {
       : projects.filter((project) => project.category === filter);
 
   return (
-    <SectionContainer 
-      id="projects" 
-      bgImage="/images/certificate.jpg" 
-      bgOpacity={0.7}
-      bgSize="100% auto"
+    <SectionContainer
+      id="projects"
+      bgImage="/images/experience.jpg"
+      bgOpacity={0.62}
+      bgSize="cover"
       darkOverlay={true}
       whiteText={true}
       sx={{ bgcolor: 'background.paper' }}
     >
       <Container>
         <Typography variant="h3" component="h2" align="center" gutterBottom sx={{ mb: 2 }}>
-          Projects
+          Platform Work & Projects
         </Typography>
         <Typography
           variant="body1"
@@ -37,7 +37,8 @@ const Projects = () => {
             color: { xs: 'text.secondary', md: 'rgba(255, 255, 255, 0.9)' }
           }}
         >
-          Explore my portfolio of applications and web projects. Each project demonstrates different aspects of my development skills.
+          Current work centers on production-minded platform development: Kotlin and Spring services, React frontends,
+          self-hosted infrastructure, media workflows, observability, and UX details that hold up under real devices.
         </Typography>
 
         <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
@@ -60,6 +61,7 @@ const Projects = () => {
             }}
           >
             <Tab label="All" value="all" aria-controls="projects-all" />
+            <Tab label="Platform" value="platform" aria-controls="projects-platform" />
             <Tab label="Web" value="web" aria-controls="projects-web" />
             <Tab label="App" value="app" aria-controls="projects-app" />
           </Tabs>
@@ -67,7 +69,7 @@ const Projects = () => {
 
         <Grid container spacing={4} role="list" aria-label="projects">
           {filteredProjects.map((project) => (
-            <Grid item xs={12} sm={6} md={4} key={project.id} role="listitem">
+            <Grid item xs={12} sm={project.featured ? 12 : 6} md={project.featured ? 8 : 4} key={project.id} role="listitem">
               <ProjectCard project={project} />
             </Grid>
           ))}

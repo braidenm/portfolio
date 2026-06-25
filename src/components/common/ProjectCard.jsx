@@ -13,23 +13,28 @@ import { GitHub, Launch } from '@mui/icons-material';
 import { Link as RouterLink } from 'react-router-dom';
 
 const ProjectCard = ({ project }) => {
+  const hasLiveLink = Boolean(project.liveUrl);
+
   return (
     <Card
       sx={{
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
+        border: project.featured ? 2 : 0,
+        borderColor: 'primary.main',
+        boxShadow: project.featured ? 8 : 1,
         transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
         '&:hover': {
           transform: 'translateY(-8px)',
-          boxShadow: 6,
+          boxShadow: project.featured ? 12 : 6,
         },
       }}
     >
       {project.imageUrl ? (
         <CardMedia
           component="img"
-          height="200"
+          height={project.featured ? '260' : '200'}
           image={project.imageUrl}
           alt={project.title}
           sx={{ objectFit: 'cover', bgcolor: 'grey.200' }}
@@ -53,12 +58,40 @@ const ProjectCard = ({ project }) => {
         </Box>
       )}
       <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+        {project.featured && (
+          <Chip
+            label="Featured platform build"
+            color="primary"
+            size="small"
+            sx={{ alignSelf: 'flex-start', mb: 1.5, fontWeight: 700 }}
+          />
+        )}
         <Typography variant="h6" component="h3" gutterBottom sx={{ fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
           {project.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{ mb: 2, flexGrow: 1 }}>
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
           {project.description}
         </Typography>
+        {(project.role || project.impact) && (
+          <Stack spacing={1.25} sx={{ mb: 2 }}>
+            {project.role && (
+              <Box>
+                <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 700, textTransform: 'uppercase' }}>
+                  Role
+                </Typography>
+                <Typography variant="body2">{project.role}</Typography>
+              </Box>
+            )}
+            {project.impact && (
+              <Box>
+                <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 700, textTransform: 'uppercase' }}>
+                  Impact
+                </Typography>
+                <Typography variant="body2">{project.impact}</Typography>
+              </Box>
+            )}
+          </Stack>
+        )}
         <Box sx={{ mb: 2 }}>
           <Stack direction="row" spacing={1} flexWrap="wrap" gap={1}>
             {project.technologies.map((tech, index) => (
@@ -66,7 +99,7 @@ const ProjectCard = ({ project }) => {
             ))}
           </Stack>
         </Box>
-        <Stack direction="row" spacing={2}>
+        <Stack direction="row" spacing={2} sx={{ mt: 'auto' }}>
           <Button
             variant="outlined"
             startIcon={<GitHub />}
@@ -78,6 +111,19 @@ const ProjectCard = ({ project }) => {
           >
             GitHub
           </Button>
+          {hasLiveLink && (
+            <Button
+              variant="contained"
+              startIcon={<Launch />}
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              size="small"
+              aria-label={`Open ${project.title}`}
+            >
+              Live App
+            </Button>
+          )}
           {project.demoUrl && (
             <Button
               variant="contained"
