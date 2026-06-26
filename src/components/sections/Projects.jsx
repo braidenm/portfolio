@@ -37,8 +37,9 @@ const Projects = () => {
             color: { xs: 'text.secondary', md: 'rgba(255, 255, 255, 0.9)' }
           }}
         >
-          Current work centers on production-minded platform development: Kotlin and Spring services, React frontends,
-          self-hosted infrastructure, media workflows, observability, and UX details that hold up under real devices.
+          Current work centers on building a spec-driven app sandbox: Kotlin and Spring services, React frontends,
+          event-modeled workflows, CQRS-style boundaries, self-hosted infrastructure, AI-assisted iteration, and UX
+          details proven against real mobile and desktop devices.
         </Typography>
 
         <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>

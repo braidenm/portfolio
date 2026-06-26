@@ -5,9 +5,9 @@ export const personalInfo = {
   phone: '(219)743-2686',
   github: 'https://github.com/braidenm',
   linkedin: 'https://www.linkedin.com/in/braiden-miller-64173015/',
-  aboutMe: 'I am a Senior Software Engineer with a passion for architecting scalable microservices and solving complex distributed system problems. With a background that spans from high-stakes retail management to lead technical roles, I bring a unique blend of leadership, empathy, and technical rigor to every project. I specialize in event-driven architectures, performance optimization, and fostering a culture of high-quality, well-tested code. Whether it is migrating millions of records or experimenting with AI-driven development, I thrive on "stretch goals" and technical challenges that push the boundaries of what a system can handle.',
+  aboutMe: 'I am a Senior Software Engineer with a passion for architecting scalable microservices and solving complex distributed system problems. With a background that spans from high-stakes retail management to lead technical roles, I bring a unique blend of leadership, empathy, and technical rigor to every project. I specialize in event-driven architectures, performance optimization, and fostering a culture of high-quality, well-tested code. My current portfolio work explores spec-driven design, event modeling, CQRS-style boundaries, and AI-assisted development through real apps that run on my own infrastructure.',
   heroText: 'Senior Software Engineer & Technical Leader',
-  heroDescription: 'Specializing in high-performance Java/Kotlin microservices, event-driven systems with Kafka, and scalable search solutions using Elasticsearch. I lead by example, combining deep technical expertise with a commitment to mentoring and architectural excellence.',
+  heroDescription: 'Building high-performance Java/Kotlin platforms, event-driven systems, and spec-driven product experiments with React, Spring, CQRS patterns, and AI-assisted development workflows.',
 };
 
 export const education = {
