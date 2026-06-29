@@ -16,16 +16,20 @@ import { Email, Phone, GitHub, LinkedIn, Send } from '@mui/icons-material';
 import SectionContainer from '../common/SectionContainer';
 import { personalInfo } from '../../data/personalInfo';
 
+const CONTACT_ENDPOINT = process.env.REACT_APP_CONTACT_ENDPOINT || '/v1/portfolio/contact';
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: '',
+    website: '',
   });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ type: '', message: '' });
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,7 +53,7 @@ const Contact = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validate();
     if (Object.keys(newErrors).length > 0) {
@@ -57,14 +61,43 @@ const Contact = () => {
       return;
     }
 
-    // Simulate form submission
-    console.log('Form submitted:', formData);
-    setStatus({
-      type: 'success',
-      message: 'Thank you! Your message has been sent successfully.',
-    });
-    setOpenSnackbar(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        let errorMessage = 'Sorry, your message could not be sent. Please try again.';
+        try {
+          const payload = await response.json();
+          errorMessage = payload?.error?.message || payload?.message || errorMessage;
+        } catch {
+          // Keep the user-friendly fallback when the server returns no JSON body.
+        }
+        throw new Error(errorMessage);
+      }
+
+      setStatus({
+        type: 'success',
+        message: 'Thank you! Your message has been sent successfully.',
+      });
+      setOpenSnackbar(true);
+      setFormData({ name: '', email: '', subject: '', message: '', website: '' });
+    } catch (error) {
+      setStatus({
+        type: 'error',
+        message: error.message,
+      });
+      setOpenSnackbar(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleCloseSnackbar = () => {
@@ -89,6 +122,17 @@ const Contact = () => {
           <Grid item xs={12} md={5}>
             <Box component="form" onSubmit={handleSubmit} noValidate>
               <Grid container spacing={2}>
+                <Box
+                  component="input"
+                  type="text"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  sx={{ display: 'none' }}
+                />
                 <Grid item xs={12} sm={6}>
                   <TextField
                     fullWidth
@@ -150,10 +194,11 @@ const Contact = () => {
                     variant="contained"
                     fullWidth
                     size="large"
+                    disabled={isSubmitting}
                     endIcon={<Send />}
                     sx={{ py: 1.5 }}
                   >
-                    Send Message
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
                 </Grid>
               </Grid>
