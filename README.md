@@ -63,6 +63,16 @@ npm run build
 
 This creates an optimized production build in the `build/` directory.
 
+### Contact Form
+
+The contact form posts to `/v1/portfolio/contact` by default. In production, Caddy routes that path to the platform backend so email delivery happens server-side through MailerSend.
+
+For local or staging builds that need a different API origin, set:
+
+```bash
+REACT_APP_CONTACT_ENDPOINT=http://localhost:8080/v1/portfolio/contact
+```
+
 ### Docker
 1. Build the image:
 ```bash
