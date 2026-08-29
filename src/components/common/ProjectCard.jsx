@@ -70,6 +70,9 @@ const ProjectCard = ({ project }) => {
             sx={{ alignSelf: 'flex-start', mb: 1.5, fontWeight: 700 }}
           />
         )}
+        {project.portfolioEra && (
+          <Chip label={project.portfolioEra} color={project.featured ? 'primary' : 'default'} size="small" variant={project.featured ? 'filled' : 'outlined'} sx={{ alignSelf: 'flex-start', mb: 1.5, fontWeight: 700 }} />
+        )}
         <Typography variant="h6" component="h3" gutterBottom sx={{ fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
           {project.title}
         </Typography>
@@ -126,6 +129,11 @@ const ProjectCard = ({ project }) => {
               aria-label={`Open ${project.title}`}
             >
               Live App
+            </Button>
+          )}
+          {project.demoUrl && (
+            <Button variant="contained" startIcon={<Launch />} href={project.demoUrl} target="_blank" rel="noopener noreferrer" size="small" aria-label={`View ${project.title} demo`}>
+              Progression demo
             </Button>
           )}
         </Stack>
