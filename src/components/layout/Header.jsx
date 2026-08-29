@@ -23,7 +23,7 @@ const Header = () => {
     <AppBar
       position="fixed"
       sx={{
-        bgcolor: scrolled ? 'rgba(0, 0, 0, 0.85)' : 'transparent',
+        bgcolor: scrolled ? 'rgba(11, 31, 51, 0.94)' : 'transparent',
         boxShadow: scrolled ? 2 : 0,
         transition: 'all 0.3s ease-in-out',
         backdropFilter: scrolled ? 'blur(10px)' : 'none',
@@ -67,7 +67,7 @@ const Header = () => {
                 fontSize: { xs: '1.2rem', md: scrolled ? '1.5rem' : '1.8rem' },
               }}
             >
-              Braiden's Portfolio
+              Braiden Miller
             </Typography>
           </Box>
           <Box sx={{ flexGrow: 1 }} />

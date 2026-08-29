@@ -13,57 +13,36 @@ const TechCarousel = () => {
     >
       <Container>
         <Typography variant="h4" component="h2" align="center" gutterBottom sx={{ mb: 4 }}>
-          Technologies
+          Core toolkit
         </Typography>
         <Box
           sx={{
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center',
-            gap: 4,
+            gap: 1.5,
             alignItems: 'center',
           }}
         >
-          {techStack.map((tech, index) => (
+          {techStack.map((tech) => (
             <Box
-              key={index}
+              key={tech.name}
               sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 1,
+                px: 2,
+                py: 1,
+                border: 1,
+                borderColor: 'divider',
+                borderRadius: 8,
+                bgcolor: 'background.default',
+                textAlign: 'center',
+                transition: 'transform 0.2s ease-in-out, border-color 0.2s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  borderColor: 'primary.main',
+                },
               }}
             >
-              <Box
-                component="img"
-                src={tech.image}
-                alt={tech.name}
-                sx={{
-                  height: { xs: 40, sm: 50, md: 60 },
-                  width: 'auto',
-                  objectFit: 'contain',
-                  filter: 'grayscale(100%)',
-                  opacity: 0.7,
-                  transition: 'all 0.3s ease-in-out',
-                  '&:hover': {
-                    filter: 'grayscale(0%)',
-                    opacity: 1,
-                    transform: 'scale(1.1)',
-                  },
-                }}
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'block'; // Show text if image fails
-                }}
-              />
-              <Typography
-                variant="caption"
-                sx={{
-                  display: 'none', // Hidden by default, shown if image fails
-                  fontWeight: 'bold',
-                  color: 'text.secondary',
-                }}
-              >
+              <Typography variant="body2" sx={{ fontWeight: 700 }}>
                 {tech.name}
               </Typography>
             </Box>

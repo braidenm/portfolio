@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Dialog,
   DialogContent,
   IconButton,
-  Box,
 } from '@mui/material';
 import { Close } from '@mui/icons-material';
 

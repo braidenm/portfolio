@@ -10,7 +10,6 @@ import {
   Stack,
 } from '@mui/material';
 import { GitHub, Launch } from '@mui/icons-material';
-import { Link as RouterLink } from 'react-router-dom';
 
 const ProjectCard = ({ project }) => {
   const hasLiveLink = Boolean(project.liveUrl);
@@ -20,7 +19,7 @@ const ProjectCard = ({ project }) => {
       sx={{
         height: '100%',
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: { xs: 'column', md: project.featured ? 'row' : 'column' },
         border: project.featured ? 2 : 0,
         borderColor: 'primary.main',
         boxShadow: project.featured ? 8 : 1,
@@ -34,10 +33,15 @@ const ProjectCard = ({ project }) => {
       {project.imageUrl ? (
         <CardMedia
           component="img"
-          height={project.featured ? '260' : '200'}
+          height={project.featured ? '360' : '200'}
           image={project.imageUrl}
           alt={project.title}
-          sx={{ objectFit: 'cover', bgcolor: 'grey.200' }}
+          sx={{
+            objectFit: 'cover',
+            objectPosition: 'center',
+            bgcolor: 'grey.200',
+            width: { xs: '100%', md: project.featured ? '48%' : '100%' },
+          }}
           onError={(e) => {
             e.target.style.display = 'none';
           }}
@@ -122,18 +126,6 @@ const ProjectCard = ({ project }) => {
               aria-label={`Open ${project.title}`}
             >
               Live App
-            </Button>
-          )}
-          {project.demoUrl && (
-            <Button
-              variant="contained"
-              startIcon={<Launch />}
-              component={RouterLink}
-              to="/under-construction"
-              size="small"
-              aria-label={`View ${project.title} demo`}
-            >
-              Demo
             </Button>
           )}
         </Stack>

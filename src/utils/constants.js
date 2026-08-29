@@ -9,9 +9,9 @@ export const SECTIONS = {
 
 export const NAV_ITEMS = [
   { label: 'Home', section: SECTIONS.HOME },
-  { label: 'About Me', section: SECTIONS.ABOUT },
-  { label: 'Work History', section: SECTIONS.WORK_HISTORY },
-  { label: 'Skills', section: SECTIONS.SKILLS },
-  { label: 'Projects', section: SECTIONS.PROJECTS },
+  { label: 'About', section: SECTIONS.ABOUT },
+  { label: 'Experience', section: SECTIONS.WORK_HISTORY },
+  { label: 'Approach', section: SECTIONS.SKILLS },
+  { label: 'Work', section: SECTIONS.PROJECTS },
   { label: 'Contact', section: SECTIONS.CONTACT },
 ];
