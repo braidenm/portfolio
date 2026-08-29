@@ -1,22 +1,22 @@
 export const palette = {
   primary: {
-    main: '#1E90FF',
-    light: '#4DA3FF',
-    dark: '#0066CC',
+    main: '#2F6FAF',
+    light: '#78A9D4',
+    dark: '#173F68',
     contrastText: '#FFFFFF',
   },
   secondary: {
-    main: '#FF6B6B',
-    light: '#FF8E8E',
-    dark: '#E63946',
+    main: '#0F766E',
+    light: '#5FA8A1',
+    dark: '#0A514C',
     contrastText: '#FFFFFF',
   },
   background: {
     default: '#FFFFFF',
-    paper: '#F5F5F5',
+    paper: '#F4F7FA',
   },
   text: {
-    primary: '#333333',
-    secondary: '#666666',
+    primary: '#142033',
+    secondary: '#526176',
   },
 };

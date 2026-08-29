@@ -1,15 +1,18 @@
 import React from 'react';
 import { Card, CardContent, Typography, Box } from '@mui/material';
-import * as Icons from '@mui/icons-material';
+import { Code, Group, Storage, TrendingUp } from '@mui/icons-material';
+
+const icons = { Code, Group, Storage, TrendingUp };
 
 const SkillCard = ({ skill }) => {
-  const IconComponent = Icons[skill.icon] || Icons.Code;
+  const IconComponent = icons[skill.icon] || Code;
 
   return (
     <Card
       sx={{
         height: '100%',
-        textAlign: 'center',
+        textAlign: 'left',
+        border: '1px solid #E1E8F0',
         transition: 'transform 0.3s ease-in-out',
         '&:hover': {
           transform: 'translateY(-4px)',
@@ -21,17 +24,17 @@ const SkillCard = ({ skill }) => {
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'center',
+            justifyContent: 'flex-start',
             mb: 2,
             color: 'primary.main',
           }}
         >
-          <IconComponent sx={{ fontSize: 48 }} />
+          <IconComponent sx={{ fontSize: 36 }} />
         </Box>
         <Typography variant="h6" component="h3" gutterBottom>
           {skill.name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.7 }}>
           {skill.description}
         </Typography>
       </CardContent>

@@ -205,7 +205,7 @@ def build_resume():
         Paragraph(
             "Golden, Colorado | (219) 743-2686 | "
             '<link href="mailto:braidenjamesmiller@gmail.com" color="#1769AA">braidenjamesmiller@gmail.com</link> | '
-            '<link href="https://braidenmiller.com" color="#1769AA">braidenmiller.com</link> | '
+            '<link href="https://www.braidenmiller.com" color="#1769AA">Portfolio</link> | '
             '<link href="https://www.linkedin.com/in/braiden-miller-64173015/" color="#1769AA">LinkedIn</link> | '
             '<link href="https://github.com/braidenm" color="#1769AA">GitHub</link>',
             styles["contact"],

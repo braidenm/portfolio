@@ -13,14 +13,14 @@ const TechCarousel = () => {
     >
       <Container>
         <Typography variant="h4" component="h2" align="center" gutterBottom sx={{ mb: 4 }}>
-          Technologies
+          Core toolkit
         </Typography>
         <Box
           sx={{
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center',
-            gap: 4,
+            gap: 1.5,
             alignItems: 'center',
           }}
         >
@@ -28,12 +28,11 @@ const TechCarousel = () => {
             <Box
               key={tech.name}
               sx={{
-                minWidth: { xs: 120, sm: 150 },
-                px: 2.5,
-                py: 1.5,
+                px: 2,
+                py: 1,
                 border: 1,
                 borderColor: 'divider',
-                borderRadius: 2,
+                borderRadius: 8,
                 bgcolor: 'background.default',
                 textAlign: 'center',
                 transition: 'transform 0.2s ease-in-out, border-color 0.2s ease-in-out',

@@ -107,12 +107,7 @@ const Contact = () => {
   return (
     <SectionContainer 
       id="contact" 
-      bgImage="/images/call-to-action-bg.jpg" 
-      bgOpacity={0.7}
-      bgSize="100% auto"
-      darkOverlay={true}
-      whiteText={true}
-      sx={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: 'background.default' }}
+      sx={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: '#0B1F33', color: 'white' }}
     >
       <Container>
         <Typography variant="h3" component="h2" align="center" gutterBottom sx={{ mb: 6 }}>
@@ -121,7 +116,7 @@ const Contact = () => {
         <Typography
           variant="body1"
           align="center"
-          sx={{ mt: -4, mb: 6, maxWidth: 760, mx: 'auto', color: { xs: 'text.secondary', md: 'rgba(255,255,255,0.9)' } }}
+          sx={{ mt: -4, mb: 6, maxWidth: 760, mx: 'auto', color: 'rgba(255,255,255,0.75)' }}
         >
           I&apos;m interested in senior engineering roles where product partnership, cross-team clarity,
           and reliable delivery matter as much as the code.
@@ -151,7 +146,7 @@ const Contact = () => {
                     error={!!errors.name}
                     helperText={errors.name}
                     required
-                    sx={{ bgcolor: 'rgba(255,255,255,0.05)', borderRadius: 1 }}
+                    sx={{ bgcolor: 'white', borderRadius: 1 }}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -165,7 +160,7 @@ const Contact = () => {
                     error={!!errors.email}
                     helperText={errors.email}
                     required
-                    sx={{ bgcolor: 'rgba(255,255,255,0.05)', borderRadius: 1 }}
+                    sx={{ bgcolor: 'white', borderRadius: 1 }}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -178,7 +173,7 @@ const Contact = () => {
                     error={!!errors.subject}
                     helperText={errors.subject}
                     required
-                    sx={{ bgcolor: 'rgba(255,255,255,0.05)', borderRadius: 1 }}
+                    sx={{ bgcolor: 'white', borderRadius: 1 }}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -193,7 +188,7 @@ const Contact = () => {
                     error={!!errors.message}
                     helperText={errors.message}
                     required
-                    sx={{ bgcolor: 'rgba(255,255,255,0.05)', borderRadius: 1 }}
+                    sx={{ bgcolor: 'white', borderRadius: 1 }}
                   />
                 </Grid>
                 <Grid item xs={12}>

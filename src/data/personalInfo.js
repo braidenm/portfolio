@@ -1,13 +1,13 @@
 export const personalInfo = {
   name: 'Braiden Miller',
-  title: 'Senior Software Engineer 2',
+  title: 'Senior Software Engineer II',
   email: 'braidenjamesmiller@gmail.com',
   phone: '(219)743-2686',
   github: 'https://github.com/braidenm',
   linkedin: 'https://www.linkedin.com/in/braiden-miller-64173015/',
-  aboutMe: 'I turn ambiguous, cross-system work into a shared plan that product managers, engineers, and partner teams can execute together. I stay hands-on in Java, Kotlin, Spring, React, and event-driven systems while making ownership, tradeoffs, tests, rollout, and recovery clear. That combination has helped teams migrate millions of records safely, restore slow searches to sub-second performance, scale webhook delivery, and adopt standards that make the next change easier.',
-  heroText: 'I turn complex systems into clear, shippable work.',
-  heroDescription: 'I partner with product managers, engineers, and adjacent teams to align on the problem, prove the hard parts, and deliver reliable Java/Kotlin platforms. The result is faster decisions, safer rollouts, and systems that are easier to operate.',
+  aboutMe: 'I turn ambiguous, cross-system work into a shared plan that product managers, engineers, and partner teams can execute together. I stay hands-on while making ownership, tradeoffs, tests, rollout, and recovery clear - so teams decide faster and ship reliable software with fewer surprises.',
+  heroText: 'Complex systems. Clear decisions. Reliable delivery.',
+  heroDescription: 'I partner with product managers, engineers, and adjacent teams to clarify the problem, prove the risky parts with evidence, and deliver Java and Kotlin platforms that hold up in production.',
 };
 
 export const education = {
@@ -49,5 +49,5 @@ export const certifications = {
 };
 
 export const experience = {
-  description: 'Seven years of professional software delivery and six prior years of people leadership. I bring structure to unclear work, facilitate difficult design conversations with evidence, mentor through examples and reviews, and keep contributing code through delivery and operation.',
+  description: 'Seven years building software and six prior years leading people. That background still shows up in how I coach, facilitate difficult conversations, and connect technical work to business outcomes.',
 };

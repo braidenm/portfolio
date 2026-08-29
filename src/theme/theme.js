@@ -24,7 +24,7 @@ const theme = createTheme({
     },
     h3: {
       fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
-      fontWeight: 500,
+      fontWeight: 700,
       lineHeight: 1.3,
       letterSpacing: '0em',
     },
@@ -70,16 +70,17 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           textTransform: 'none',
-          borderRadius: 4,
+          borderRadius: 8,
           padding: '10px 24px',
+          fontWeight: 700,
         },
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
-          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+          borderRadius: 16,
+          boxShadow: '0 10px 30px rgba(20, 32, 51, 0.08)',
         },
       },
     },

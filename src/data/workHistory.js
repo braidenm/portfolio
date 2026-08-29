@@ -8,11 +8,11 @@ export const workHistory = [
       'Partner with product managers, architects, and dependent teams to turn ambiguous platform goals into ADRs, phased plans, and services that meet aggressive launch dates.',
       'Migrated millions of records from a monolith while both systems remained synchronized, using observability and rollback paths to complete the cutover without customer disruption.',
       'Replaced a search path that exceeded 60 seconds with Elasticsearch in one two-week sprint, restoring sub-second results and enabling a safe relaunch.',
-      'Designed and load-tested a webhook platform with DDD, CQRS, and backpressure; dispatched 10,000 outbound calls in under 30 seconds while protecting downstream services.',
-      'Removed redundant encryption work that was rate-limiting requests, reducing daily KMS calls from more than 10,000 to fewer than 100.',
-      'Created API-first standards, shared libraries, testing patterns, and practical coaching that helped frontend, backend, analytics, and partner teams deliver against clearer contracts.',
+      'Designed and load-tested a webhook platform with DDD, CQRS, Kafka, and backpressure; dispatched 10,000 outbound calls in under 30 seconds while protecting downstream services.',
+      'Created API-first standards, shared libraries, and testing patterns that helped frontend, backend, analytics, and partner teams deliver against clearer contracts.',
+      'Delivered Azure AI Foundry provisioning and LLM gateway foundations on an aggressive timeline, coordinating across vendor and internal ownership boundaries.',
     ],
-    technologies: ['Java', 'Kotlin', 'Spring Boot', 'Kafka', 'Elasticsearch', 'Axon Framework', 'CQRS/DDD', 'PostgreSQL', 'MongoDB', 'AI Tooling'],
+    technologies: ['Java', 'Kotlin', 'Spring Boot', 'Kafka', 'Elasticsearch', 'Axon', 'PostgreSQL', 'MongoDB', 'Azure AI'],
   },
   {
     id: 'zenplanner',
@@ -36,16 +36,5 @@ export const workHistory = [
       'Reduced monolith coupling by extracting reusable components and added tests, services, and APIs for incremental delivery.',
     ],
     technologies: ['Java', 'Spring', 'Microservices', 'SQL', 'Testing', 'Agile'],
-  },
-  {
-    id: 'management',
-    company: 'Retail Management',
-    position: 'Store Manager / Management Roles',
-    duration: 'Pre-2020 (6 years)',
-    description: [
-      'Managed profit and loss statements for high-volume stores, overseeing payroll budgets and inventory for up to 70 employees.',
-      'Built a leadership foundation in coaching, conflict resolution, stakeholder communication, and continuous process improvement.',
-    ],
-    technologies: ['Leadership', 'Project Management', 'Team Development', 'Process Improvement', 'LEAN Practices'],
   },
 ];

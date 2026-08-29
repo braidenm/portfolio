@@ -1,6 +1,6 @@
-# Portal - React Portfolio Site
+# Braiden Miller - Portfolio
 
-A modern React portfolio website showcasing projects, skills, work history, and professional information.
+A responsive portfolio for senior software engineering opportunities, focused on collaboration, measurable outcomes, and current platform work.
 
 ## Technology Stack
 
@@ -14,10 +14,10 @@ A modern React portfolio website showcasing projects, skills, work history, and 
 - **Responsive Design** - Mobile-first approach with Material-UI breakpoints
 - **Modern UI** - Clean, card-based layouts with hover effects and transitions
 - **Smooth Scrolling** - Native smooth scroll behavior for section navigation
-- **Project Showcase** - Filterable project gallery with GitHub and demo links
+- **Focused Project Showcase** - One current, inspectable platform case study instead of a wall of older tutorial projects
 - **Resume Viewer** - PDF resume viewer with download option
-- **Work History** - Detailed work experience timeline
-- **Skills Display** - Technology stack with icons and descriptions
+- **Work History** - Outcome-oriented professional experience
+- **Engineering Approach** - Product partnership, cross-team alignment, technical validation, and team enablement
 - **Contact Information** - Easy access to email, phone, and social links
 
 ## Project Structure
@@ -88,16 +88,16 @@ docker run -p 8080:80 portfolio
 ## Deployment and CI/CD
 This project uses GitHub Actions for automated deployment. On every push to the `main` branch:
 1. A Docker image is built and pushed to the GitHub Container Registry (GHCR).
-2. A `portfolio_updated` event is dispatched to the `braidenm/homelab-infrustructure` repository to trigger deployment.
+2. A `portfolio_updated` event is dispatched to the `braidenm/home-lab-infrastructure` repository to trigger deployment.
 
 ## Sections
 
 - **Home/Hero** - Welcome section with introduction
-- **About Me** - Personal background, education, certifications, and experience
-- **Resume** - PDF resume viewer
-- **Work History** - Professional experience timeline
-- **Skills** - Technology stack and programming languages
-- **Projects** - Portfolio of applications and web projects
+- **About** - Collaboration style, engineering background, education, and certifications
+- **Experience** - Professional roles and measurable outcomes
+- **Approach** - How product, architecture, delivery, and feedback fit together
+- **Work** - The live Platform App Lab case study
+- **Resume** - Preview and download of the generated PDF resume
 - **Contact** - Contact information and social links
 
 ## Data Management
