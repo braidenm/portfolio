@@ -116,7 +116,15 @@ const Contact = () => {
     >
       <Container>
         <Typography variant="h3" component="h2" align="center" gutterBottom sx={{ mb: 6 }}>
-          Contact Me
+          Let&apos;s Build Something Useful
+        </Typography>
+        <Typography
+          variant="body1"
+          align="center"
+          sx={{ mt: -4, mb: 6, maxWidth: 760, mx: 'auto', color: { xs: 'text.secondary', md: 'rgba(255,255,255,0.9)' } }}
+        >
+          I&apos;m interested in senior engineering roles where product partnership, cross-team clarity,
+          and reliable delivery matter as much as the code.
         </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} md={5}>

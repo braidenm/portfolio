@@ -3,14 +3,14 @@ export const projects = [
     id: 'platform-media-transfer',
     title: 'Platform App Lab',
     description:
-      'A self-hosted portfolio app directory for spec-driven product experiments. The first live app, Media Transfer, focuses on resilient photo and video upload batches, share-link workflows, media derivatives, retention, and reliable downloads across desktop, Android, and iPhone.',
+      'A running, self-hosted product and engineering case study. Media Transfer combines resilient photo and video batches, guest-friendly sharing, media processing, retention, and original-quality downloads across desktop, Android, and iPhone.',
     category: 'platform',
-    imageUrl: '/images/experience.jpg',
+    imageUrl: '/images/media-transfer-gathering.webp',
     githubUrl: 'https://github.com/braidenm/platform-demo',
     liveUrl: 'https://app.braidenmiller.com/',
     featured: true,
-    role: 'Full-stack platform and product architecture',
-    impact: 'A live sandbox for AI-assisted, event-modeled app development with a production-minded media transfer app',
+    role: 'Product framing, full-stack architecture, implementation, delivery, and operations',
+    impact: 'Connects user feedback to specs, code, tests, release evidence, observability, and real-device validation',
     technologies: [
       'Kotlin',
       'Spring Boot',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Typography, Grid, Card, CardContent, Box } from '@mui/material';
-import { School, WorkspacePremium, Business } from '@mui/icons-material';
+import { School, WorkspacePremium, Groups } from '@mui/icons-material';
 import SectionContainer from '../common/SectionContainer';
 import { personalInfo, education, certifications, experience } from '../../data/personalInfo';
 
@@ -8,11 +8,6 @@ const AboutMe = () => {
   return (
     <SectionContainer 
       id="about" 
-      bgImage="/images/about-bg.jpg" 
-      bgOpacity={0.7} 
-      bgSize="100% auto" 
-      darkOverlay={true}
-      whiteText={true}
       sx={{ bgcolor: 'background.default' }}
     >
       <Container>
@@ -28,7 +23,7 @@ const AboutMe = () => {
             mx: 'auto', 
             lineHeight: 1.6, 
             fontSize: { xs: '0.9rem', sm: '1rem' },
-            color: { xs: 'text.secondary', md: 'white' } 
+            color: 'text.secondary'
           }}
         >
           {personalInfo.aboutMe}
@@ -132,9 +127,9 @@ const AboutMe = () => {
             <Card sx={{ height: '100%' }}>
               <CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                  <Business sx={{ fontSize: 40, color: 'primary.main', mr: 2 }} />
+                  <Groups sx={{ fontSize: 40, color: 'primary.main', mr: 2 }} />
                   <Typography variant="h5" component="h3">
-                    Experience
+                    What teams get
                   </Typography>
                 </Box>
                 <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.8 }}>

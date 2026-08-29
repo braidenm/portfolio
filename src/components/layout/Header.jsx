@@ -67,7 +67,7 @@ const Header = () => {
                 fontSize: { xs: '1.2rem', md: scrolled ? '1.5rem' : '1.8rem' },
               }}
             >
-              Braiden's Portfolio
+              Braiden Miller
             </Typography>
           </Box>
           <Box sx={{ flexGrow: 1 }} />

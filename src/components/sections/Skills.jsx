@@ -19,7 +19,7 @@ const Skills = () => {
       >
         <Container>
           <Typography variant="h3" component="h2" align="center" gutterBottom sx={{ mb: 2 }}>
-            Skills
+            How I Help Teams Deliver
           </Typography>
           <Typography
             variant="body1"
@@ -32,7 +32,8 @@ const Skills = () => {
               color: { xs: 'text.secondary', md: 'rgba(255, 255, 255, 0.9)' }
             }}
           >
-            A comprehensive technical foundation built through rigorous full-stack education and years of architecting scalable, high-performance systems in enterprise environments.
+            Senior engineering is more than choosing technology. I connect product intent, system
+            design, implementation, rollout, and feedback so teams can make faster decisions with less risk.
           </Typography>
           <Grid container spacing={4}>
             {skills.map((skill, index) => (

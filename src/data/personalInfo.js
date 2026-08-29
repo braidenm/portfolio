@@ -5,22 +5,22 @@ export const personalInfo = {
   phone: '(219)743-2686',
   github: 'https://github.com/braidenm',
   linkedin: 'https://www.linkedin.com/in/braiden-miller-64173015/',
-  aboutMe: 'I am a Senior Software Engineer with a passion for architecting scalable microservices and solving complex distributed system problems. With a background that spans from high-stakes retail management to lead technical roles, I bring a unique blend of leadership, empathy, and technical rigor to every project. I specialize in event-driven architectures, performance optimization, and fostering a culture of high-quality, well-tested code. My current portfolio work explores spec-driven design, event modeling, CQRS-style boundaries, and AI-assisted development through real apps that run on my own infrastructure.',
-  heroText: 'Senior Software Engineer & Technical Leader',
-  heroDescription: 'Building high-performance Java/Kotlin platforms, event-driven systems, and spec-driven product experiments with React, Spring, CQRS patterns, and AI-assisted development workflows.',
+  aboutMe: 'I turn ambiguous, cross-system work into a shared plan that product managers, engineers, and partner teams can execute together. I stay hands-on in Java, Kotlin, Spring, React, and event-driven systems while making ownership, tradeoffs, tests, rollout, and recovery clear. That combination has helped teams migrate millions of records safely, restore slow searches to sub-second performance, scale webhook delivery, and adopt standards that make the next change easier.',
+  heroText: 'I turn complex systems into clear, shippable work.',
+  heroDescription: 'I partner with product managers, engineers, and adjacent teams to align on the problem, prove the hard parts, and deliver reliable Java/Kotlin platforms. The result is faster decisions, safer rollouts, and systems that are easier to operate.',
 };
 
 export const education = {
   skillDistillery: {
     name: 'Skill Distillery',
     url: 'https://skilldistillery.com/',
-    description: 'Full Stack Java Program completed in March of 2019. Completed numerous full stack projects reinforcing learned concepts. Various projects were completed with groups and pair-programming. Collaborated by using git and other collaboration tools. Pushed webapps to AWS using a Tomcat server. Practiced industry standards for writing programs. Utilized debugging tools and test-driven development.',
+    description: 'Full Stack Java program completed in 2019 with team and pair-programming projects spanning Spring, JavaScript, relational data, testing, and AWS deployment.',
   },
   wgu: {
     name: 'Western Governors University',
     url: 'https://www.wgu.edu/',
-    degree: 'Bachelors of Science: Business Management',
-    description: 'Applied learned skills to become a successful manager meeting goals, developing and coaching others, and business planning.',
+    degree: 'Bachelor of Science, Business Management',
+    description: 'Built a foundation in planning, operations, stakeholder communication, coaching, and measurable business outcomes.',
   },
 };
 
@@ -49,5 +49,5 @@ export const certifications = {
 };
 
 export const experience = {
-  description: 'With over 5 years of professional software engineering experience and 6 years of leadership in retail management, I bridge the gap between technical excellence and business strategy. I have a proven track record of delivering greenfield microservices, leading complex monolith-to-microservice migrations, and optimizing high-throughput systems. My leadership style is rooted in mentorship and process improvement, ensuring teams not only deliver fast but also maintain high standards of code quality and reliability.',
+  description: 'Seven years of professional software delivery and six prior years of people leadership. I bring structure to unclear work, facilitate difficult design conversations with evidence, mentor through examples and reviews, and keep contributing code through delivery and operation.',
 };

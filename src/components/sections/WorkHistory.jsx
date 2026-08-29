@@ -22,7 +22,15 @@ const WorkHistory = () => {
       >
         <Container>
           <Typography variant="h3" component="h2" align="center" gutterBottom sx={{ mb: 2 }}>
-            Work History
+            Selected Experience
+          </Typography>
+          <Typography
+            variant="body1"
+            align="center"
+            sx={{ mb: 3, maxWidth: 840, mx: 'auto', color: { xs: 'text.secondary', md: 'rgba(255,255,255,0.9)' } }}
+          >
+            Hands-on delivery paired with the planning, communication, and enablement that help
+            product managers and engineering teams move through complex work together.
           </Typography>
           <Box sx={{ textAlign: 'center', mb: 6 }}>
             <Button

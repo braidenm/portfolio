@@ -15,7 +15,7 @@ const Projects = () => {
   return (
     <SectionContainer
       id="projects"
-      bgImage="/images/experience.jpg"
+      bgImage="/images/call-to-action-bg.jpg"
       bgOpacity={0.62}
       bgSize="cover"
       darkOverlay={true}
@@ -24,7 +24,7 @@ const Projects = () => {
     >
       <Container>
         <Typography variant="h3" component="h2" align="center" gutterBottom sx={{ mb: 2 }}>
-          Platform Work & Projects
+          Selected Engineering Work
         </Typography>
         <Typography
           variant="body1"
@@ -37,9 +37,9 @@ const Projects = () => {
             color: { xs: 'text.secondary', md: 'rgba(255, 255, 255, 0.9)' }
           }}
         >
-          Current work centers on building a spec-driven app sandbox: Kotlin and Spring services, React frontends,
-          event-modeled workflows, CQRS-style boundaries, self-hosted infrastructure, AI-assisted iteration, and UX
-          details proven against real mobile and desktop devices.
+          The platform app is the best place to inspect how I work today: product framing, architecture decisions,
+          implementation, tests, delivery, observability, and real-device feedback in one running system. Earlier
+          projects remain below as a record of the path that led here.
         </Typography>
 
         <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
