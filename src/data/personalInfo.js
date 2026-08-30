@@ -7,7 +7,7 @@ export const personalInfo = {
   linkedin: 'https://www.linkedin.com/in/braiden-miller-64173015/',
   aboutMe: 'I turn ambiguous, cross-system work into a shared plan that product managers, engineers, and partner teams can execute together. I stay hands-on while making ownership, tradeoffs, tests, rollout, and recovery clear - so teams decide faster and ship reliable software with fewer surprises.',
   heroText: 'Complex systems. Clear decisions. Reliable delivery.',
-  heroDescription: 'I partner with product managers, engineers, and adjacent teams to clarify the problem, prove the risky parts with evidence, and deliver Java and Kotlin platforms that hold up in production.',
+  heroDescription: 'I partner across product, architecture, and dependent teams to deliver complex Java and Kotlin platforms on committed timelines, make risky migrations reversible, and shorten the path from customer-reported bugs to safe production fixes, often within the same day.',
 };
 
 export const education = {

@@ -215,18 +215,18 @@ def build_resume():
     story.extend(section("Summary", styles))
     story.append(Paragraph(
         "Senior software engineer with 7+ years delivering distributed platforms and 6 years of prior people leadership. "
-        "Partners with product managers, architects, and dependent teams to turn ambiguous goals into testable plans, "
-        "clear contracts, and reliable releases. Hands-on Java/Kotlin engineer known for diagnosing hard performance "
-        "problems, de-risking migrations, mentoring through practical examples, and leaving teams with better systems "
-        "and a faster way of working.",
+        "Delivers complex platform work on committed timelines by aligning product managers, architecture, and dependent "
+        "teams around testable plans, clear contracts, and reliable releases. Hands-on Java/Kotlin engineer known for "
+        "moving millions of records out of brittle monoliths with reversible cutovers, turning customer-reported defects "
+        "into same-day production fixes, and diagnosing hard performance problems without destabilizing the product.",
         styles["body"],
     ))
 
     story.extend(section("Selected outcomes", styles))
     metrics = [
-        ("Under 1 second", "Search latency reduced from more than 60 seconds"),
-        ("10,000 calls", "Webhook dispatch completed in under 30 seconds"),
-        ("More than 99%", "Daily KMS calls reduced from over 10,000 to under 100"),
+        ("On-time launches", "Committed delivery across product, architecture, and dependent teams"),
+        ("Same-day fixes", "Customer defects diagnosed, verified, and released through a safe delivery path"),
+        ("One-click rollback", "High-risk migration cutovers designed to reverse safely"),
     ]
     metric_values = [Paragraph(value, styles["metric_value"]) for value, _ in metrics]
     metric_labels = [Paragraph(label, styles["metric_label"]) for _, label in metrics]
@@ -251,11 +251,11 @@ def build_resume():
     story.extend(section("Experience", styles))
     story.append(role_header("Senior Software Engineer II", "Pax8", "2022 - Present", styles))
     story.extend(bullets([
-        "Partner with product managers, architecture, and dependent teams to turn ambiguous platform goals into ADRs, phased plans, and services that meet aggressive launch dates.",
-        "Migrated millions of records from a monolith while old and new systems remained synchronized; used observability and rollback paths to complete cutover without customer disruption and remove legacy code.",
+        "Delivered complex platform launches on committed dates by aligning product managers, architecture, analytics, frontend, backend, and partner teams around ADRs, phased plans, and explicit dependencies.",
+        "Moved millions of records out of a brittle monolith into a domain-aligned service with explicit module boundaries; kept old and new systems synchronized and made cutover reversible with one-click rollback.",
         "Replaced a search path that exceeded 60 seconds with Elasticsearch in one two-week sprint, restoring sub-second results and enabling a safe relaunch.",
+        "Established CI/CD, service and integration testing, and observability patterns that let customer-reported defects move from diagnosis to a verified production fix in the same day.",
         "Designed and load-tested a webhook platform with DDD, CQRS, Kafka, and backpressure; dispatched 10,000 outbound calls in under 30 seconds while protecting downstream services.",
-        "Diagnosed redundant encryption work that was rate-limiting requests and reduced daily KMS calls from more than 10,000 to fewer than 100.",
         "Created API-first standards, shared libraries, testing patterns, and practical coaching that helped frontend, backend, analytics, and partner teams deliver against clearer contracts.",
         "Delivered cloud AI provisioning and LLM gateway foundations under an aggressive launch timeline, coordinating with vendor and internal specialists to close authentication and ownership gaps.",
     ], styles))
