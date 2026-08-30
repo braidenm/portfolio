@@ -34,6 +34,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=sha
+            type=raw,value=${{ github.sha }}
             type=raw,value=latest
 
       - name: Build and push Docker image
@@ -55,5 +56,5 @@ jobs:
         with:
           token: ${{ secrets.INFRA_REPO_TOKEN }}
           repository: braidenm/home-lab-infrastructure
-          event-type: portfolio_updated
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+          event-type: service_updated
+          client-payload: '{"stack":"web","service":"portfolio","image":"${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}","tag":"${{ github.sha }}","source_sha":"${{ github.sha }}"}'

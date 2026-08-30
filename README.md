@@ -88,7 +88,7 @@ docker run -p 8080:80 portfolio
 ## Deployment and CI/CD
 This project uses GitHub Actions for automated deployment. On every push to the `main` branch:
 1. A Docker image is built and pushed to the GitHub Container Registry (GHCR).
-2. A `portfolio_updated` event is dispatched to the `braidenm/home-lab-infrastructure` repository to trigger deployment.
+2. The exact commit-tagged image is sent through Home Lab's governed generic service deployment workflow as the `portfolio` service in the `web` stack.
 
 ## Sections
 
