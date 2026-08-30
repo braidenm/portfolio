@@ -11,6 +11,7 @@ import Hero from './components/sections/Hero';
 import AboutMe from './components/sections/AboutMe';
 import WorkHistory from './components/sections/WorkHistory';
 import Skills from './components/sections/Skills';
+import DevelopmentLifecycle from './components/sections/DevelopmentLifecycle';
 import Projects from './components/sections/Projects';
 import Contact from './components/sections/Contact';
 import UnderConstruction from './components/common/UnderConstruction';
@@ -24,6 +25,7 @@ const MainLayout = () => (
       <AboutMe />
       <WorkHistory />
       <Skills />
+      <DevelopmentLifecycle />
       <Projects />
       <Contact />
     </Box>

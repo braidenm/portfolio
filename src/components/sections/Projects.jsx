@@ -11,16 +11,16 @@ const Projects = () => (
       <Grid container spacing={{ xs: 3, md: 8 }} alignItems="end" sx={{ mb: 6 }}>
         <Grid item xs={12} md={7}>
           <Typography component="p" sx={{ color: 'secondary.main', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-            Working portfolio
+            Live engineering system
           </Typography>
           <Typography variant="h3" component="h2" sx={{ mt: 1.5 }}>
-            A running example of how I work.
+            See the architecture, delivery system, and controls working together.
           </Typography>
         </Grid>
         <Grid item xs={12} md={5}>
           <Typography color="text.secondary" sx={{ lineHeight: 1.7 }}>
-            The platform is the best place to inspect my work today: product framing, architecture,
-            implementation, tests, delivery, observability, and feedback in one live system.
+            Platform App Lab turns domain models and reviewed specifications into a working product,
+            proportional CI, governed deployments, operational evidence, and real user feedback.
           </Typography>
         </Grid>
       </Grid>

@@ -38,13 +38,54 @@ const WorkHistory = () => {
             ))}
           </Grid>
 
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 2, mt: 5 }}>
-            <Button variant="outlined" size="large" startIcon={<Description />} onClick={() => setOpen(true)}>
-              Preview resume
-            </Button>
-            <Button variant="contained" size="large" startIcon={<Download />} href="/resume/Braiden_Miller.pdf" download>
-              Download resume
-            </Button>
+          <Box
+            sx={{
+              mt: 6,
+              p: { xs: 2.5, md: 4 },
+              border: 1,
+              borderColor: 'divider',
+              borderRadius: 4,
+              bgcolor: 'background.default',
+            }}
+          >
+            <Grid container spacing={{ xs: 3, md: 4 }} alignItems="flex-start">
+              <Grid item xs={12} md={4}>
+                <Typography component="p" sx={{ color: 'secondary.main', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                  Resume preview
+                </Typography>
+                <Typography variant="h5" component="h3" sx={{ mt: 1.25, mb: 1.5, fontWeight: 700 }}>
+                  The concise version.
+                </Typography>
+                <Typography color="text.secondary" sx={{ lineHeight: 1.7, mb: 3 }}>
+                  Review my experience, technical scope, and recent impact here, then open the large
+                  viewer or download a copy to keep.
+                </Typography>
+                <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row', md: 'column' }, gap: 1.5 }}>
+                  <Button variant="outlined" startIcon={<Description />} onClick={() => setOpen(true)}>
+                    Open large preview
+                  </Button>
+                  <Button variant="contained" startIcon={<Download />} href="/resume/Braiden_Miller.pdf" download>
+                    Download resume
+                  </Button>
+                </Box>
+              </Grid>
+              <Grid item xs={12} md={8}>
+                <Box
+                  component="iframe"
+                  src="/resume/Braiden_Miller.pdf#view=FitH"
+                  title="Braiden Miller resume preview"
+                  sx={{
+                    display: 'block',
+                    width: '100%',
+                    height: { xs: 520, sm: 680, md: 720 },
+                    border: 1,
+                    borderColor: 'divider',
+                    borderRadius: 2,
+                    bgcolor: 'common.white',
+                  }}
+                />
+              </Grid>
+            </Grid>
           </Box>
         </Container>
       </SectionContainer>

@@ -23,6 +23,7 @@ const SectionContainer = ({ id, children, sx = {}, bgImage, bgOpacity = 0.5, dar
       sx={{
         py: { xs: 6, md: 10 },
         px: { xs: 2, sm: 3, md: 4 },
+        scrollMarginTop: { xs: '72px', md: '80px' },
         position: 'relative',
         overflow: 'hidden',
         ...(whiteText && {
