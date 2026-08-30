@@ -5,9 +5,10 @@ export const workHistory = [
     position: 'Senior Software Engineer II',
     duration: '2022 - Present',
     description: [
-      'Partner with product managers, architects, and dependent teams to turn ambiguous platform goals into ADRs, phased plans, and services that meet aggressive launch dates.',
-      'Migrated millions of records from a monolith while both systems remained synchronized, using observability and rollback paths to complete the cutover without customer disruption.',
+      'Delivered complex platform launches on committed dates by aligning product managers, architecture, analytics, frontend, backend, and partner teams around ADRs, phased plans, and explicit dependencies.',
+      'Moved millions of records out of a brittle monolith into a domain-aligned service with explicit module boundaries; kept old and new systems synchronized and made cutover reversible with one-click rollback.',
       'Replaced a search path that exceeded 60 seconds with Elasticsearch in one two-week sprint, restoring sub-second results and enabling a safe relaunch.',
+      'Established CI/CD, service and integration testing, and observability patterns that let customer-reported defects move from diagnosis to a verified production fix in the same day.',
       'Designed and load-tested a webhook platform with DDD, CQRS, Kafka, and backpressure; dispatched 10,000 outbound calls in under 30 seconds while protecting downstream services.',
       'Created API-first standards, shared libraries, and testing patterns that helped frontend, backend, analytics, and partner teams deliver against clearer contracts.',
       'Delivered Azure AI Foundry provisioning and LLM gateway foundations on an aggressive timeline, coordinating across vendor and internal ownership boundaries.',

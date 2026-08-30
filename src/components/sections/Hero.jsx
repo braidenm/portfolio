@@ -6,9 +6,9 @@ import ResumeViewer from '../Resume/ResumeViewer';
 import { personalInfo } from '../../data/personalInfo';
 
 const outcomes = [
-  { value: 'Millions', label: 'of records migrated with rollback protection' },
-  { value: '< 1 sec', label: 'search latency, reduced from over a minute' },
-  { value: '< 30 sec', label: 'to dispatch 10,000 webhook calls' },
+  { value: 'On time', label: 'committed launches delivered across product, architecture, and dependent teams' },
+  { value: 'Same day', label: 'customer-reported defects can move from diagnosis to a verified production fix' },
+  { value: '1 click', label: 'rollback built into high-risk migration cutovers before traffic moves' },
 ];
 
 const ResumePreviewButton = () => {
