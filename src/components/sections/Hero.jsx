@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material';
-import { ArrowForward, Download } from '@mui/icons-material';
+import { ArrowForward, Description } from '@mui/icons-material';
 import SectionContainer from '../common/SectionContainer';
+import ResumeViewer from '../Resume/ResumeViewer';
 import { personalInfo } from '../../data/personalInfo';
 
 const outcomes = [
@@ -9,6 +10,25 @@ const outcomes = [
   { value: '< 1 sec', label: 'search latency, reduced from over a minute' },
   { value: '< 30 sec', label: 'to dispatch 10,000 webhook calls' },
 ];
+
+const ResumePreviewButton = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button
+        variant="outlined"
+        size="large"
+        onClick={() => setOpen(true)}
+        startIcon={<Description />}
+        sx={{ color: 'white', borderColor: 'rgba(255,255,255,0.6)', '&:hover': { borderColor: 'white' } }}
+      >
+        Preview resume
+      </Button>
+      <ResumeViewer open={open} onClose={() => setOpen(false)} />
+    </>
+  );
+};
 
 const Hero = () => (
   <SectionContainer
@@ -55,16 +75,7 @@ const Hero = () => (
             <Button variant="contained" color="secondary" size="large" href="#projects" endIcon={<ArrowForward />}>
               See the work
             </Button>
-            <Button
-              variant="outlined"
-              size="large"
-              href="/resume/Braiden_Miller.pdf"
-              download
-              startIcon={<Download />}
-              sx={{ color: 'white', borderColor: 'rgba(255,255,255,0.6)', '&:hover': { borderColor: 'white' } }}
-            >
-              Download resume
-            </Button>
+            <ResumePreviewButton />
           </Stack>
         </Grid>
         <Grid item xs={12} md={5}>

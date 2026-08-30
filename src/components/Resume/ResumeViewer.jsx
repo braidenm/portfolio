@@ -1,10 +1,13 @@
 import React from 'react';
 import {
+  Box,
+  Button,
   Dialog,
   DialogContent,
   IconButton,
+  Typography,
 } from '@mui/material';
-import { Close } from '@mui/icons-material';
+import { Close, Download } from '@mui/icons-material';
 
 const ResumeViewer = ({ open, onClose }) => {
   return (
@@ -16,30 +19,42 @@ const ResumeViewer = ({ open, onClose }) => {
       PaperProps={{
         sx: {
           height: '90vh',
-          position: 'relative',
-          overflow: 'visible',
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
         },
       }}
     >
-      <IconButton
-        onClick={onClose}
-        aria-label="Close resume preview"
+      <Box
         sx={{
-          position: 'absolute',
-          right: -15,
-          top: -15,
-          color: 'white',
-          zIndex: 10,
-          bgcolor: 'rgba(0, 0, 0, 0.5)',
-          boxShadow: 2,
-          '&:hover': {
-            bgcolor: 'rgba(0, 0, 0, 0.7)',
-          },
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 2,
+          px: { xs: 1.5, sm: 2.5 },
+          py: 1.25,
+          bgcolor: 'primary.main',
+          color: 'common.white',
         }}
       >
-        <Close />
-      </IconButton>
-      <DialogContent sx={{ p: 0, height: '100%' }}>
+        <Typography variant="h6" component="h2" sx={{ fontWeight: 700 }}>
+          Resume preview
+        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+          <Button
+            href="/resume/Braiden_Miller.pdf"
+            download
+            startIcon={<Download />}
+            sx={{ color: 'common.white', '&:hover': { bgcolor: 'rgba(255,255,255,0.12)' } }}
+          >
+            Download PDF
+          </Button>
+          <IconButton onClick={onClose} aria-label="Close resume preview" sx={{ color: 'common.white' }}>
+            <Close />
+          </IconButton>
+        </Box>
+      </Box>
+      <DialogContent sx={{ p: 0, flex: 1, minHeight: 0 }}>
         <iframe
           src="/resume/Braiden_Miller.pdf"
           style={{
