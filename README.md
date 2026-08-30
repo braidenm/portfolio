@@ -1,8 +1,6 @@
-# Deprecated Standalone Portfolio
+# Braiden Miller - Portfolio
 
-> This repository is retained as historical source and is intentionally not deployed. The canonical portfolio is maintained in [`braidenm/platform-demo`](https://github.com/braidenm/platform-demo) and published at [`app.braidenmiller.com/about/braiden`](https://app.braidenmiller.com/about/braiden).
-
-This React application contains the former standalone portfolio. New portfolio content, resume updates, and deployment changes belong in Platform Demo.
+A responsive portfolio for senior software engineering opportunities, focused on collaboration, measurable outcomes, and current platform work.
 
 ## Technology Stack
 
@@ -67,7 +65,7 @@ This creates an optimized production build in the `build/` directory.
 
 ### Contact Form
 
-The historical contact form posts to `/v1/portfolio/contact` by default. It is available only when running this project locally with a compatible backend; there is no production route for this standalone application.
+The contact form posts to `/v1/portfolio/contact` by default. In production, Caddy routes that path to the platform backend so email delivery happens server-side through MailerSend.
 
 For local or staging builds that need a different API origin, set:
 
@@ -87,9 +85,10 @@ docker run -p 8080:80 portfolio
 ```
 3. Access at [http://localhost:8080](http://localhost:8080)
 
-## Deployment
-
-The standalone build and deployment workflow was removed when Platform Demo became the canonical portfolio. Do not publish or reintroduce a production deployment from this repository.
+## Deployment and CI/CD
+This project uses GitHub Actions for automated deployment. On every push to the `main` branch:
+1. A Docker image is built and pushed to the GitHub Container Registry (GHCR).
+2. A `portfolio_updated` event is dispatched to the `braidenm/home-lab-infrastructure` repository to trigger deployment.
 
 ## Sections
 
