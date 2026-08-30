@@ -23,6 +23,7 @@ const ResumeViewer = ({ open, onClose }) => {
     >
       <IconButton
         onClick={onClose}
+        aria-label="Close resume preview"
         sx={{
           position: 'absolute',
           right: -15,
@@ -46,7 +47,7 @@ const ResumeViewer = ({ open, onClose }) => {
             height: '100%',
             border: 'none',
           }}
-          title="Resume PDF"
+          title="Braiden Miller resume PDF"
         />
       </DialogContent>
     </Dialog>

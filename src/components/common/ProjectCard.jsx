@@ -8,8 +8,27 @@ import {
   Button,
   Chip,
   Stack,
+  Divider,
 } from '@mui/material';
-import { GitHub, Launch } from '@mui/icons-material';
+import { CheckCircleOutline, GitHub, Launch } from '@mui/icons-material';
+
+const EvidenceList = ({ title, items }) => (
+  <Box>
+    <Typography variant="subtitle2" component="h4" sx={{ mb: 1.25, fontWeight: 700 }}>
+      {title}
+    </Typography>
+    <Stack spacing={1.1}>
+      {items.map((item) => (
+        <Stack direction="row" spacing={1} alignItems="flex-start" key={item}>
+          <CheckCircleOutline color="secondary" sx={{ fontSize: 18, mt: '2px', flexShrink: 0 }} />
+          <Typography variant="body2" color="text.secondary">
+            {item}
+          </Typography>
+        </Stack>
+      ))}
+    </Stack>
+  </Box>
+);
 
 const ProjectCard = ({ project }) => {
   const hasLiveLink = Boolean(project.liveUrl);
@@ -19,7 +38,7 @@ const ProjectCard = ({ project }) => {
       sx={{
         height: '100%',
         display: 'flex',
-        flexDirection: { xs: 'column', md: project.featured ? 'row' : 'column' },
+        flexDirection: 'column',
         border: project.featured ? 2 : 0,
         borderColor: 'primary.main',
         boxShadow: project.featured ? 8 : 1,
@@ -33,14 +52,14 @@ const ProjectCard = ({ project }) => {
       {project.imageUrl ? (
         <CardMedia
           component="img"
-          height={project.featured ? '360' : '200'}
+          height={project.featured ? '400' : '200'}
           image={project.imageUrl}
           alt={project.title}
           sx={{
             objectFit: 'cover',
             objectPosition: 'center',
             bgcolor: 'grey.200',
-            width: { xs: '100%', md: project.featured ? '48%' : '100%' },
+            width: '100%',
           }}
           onError={(e) => {
             e.target.style.display = 'none';
@@ -95,6 +114,19 @@ const ProjectCard = ({ project }) => {
               </Box>
             )}
           </Stack>
+        )}
+        {(project.capabilities || project.deliveryEvidence) && (
+          <>
+            <Divider sx={{ mb: 2.5 }} />
+            <Stack spacing={2.5} sx={{ mb: 2.5 }}>
+              {project.capabilities && (
+                <EvidenceList title="Admin and governance" items={project.capabilities} />
+              )}
+              {project.deliveryEvidence && (
+                <EvidenceList title="Spec-driven delivery evidence" items={project.deliveryEvidence} />
+              )}
+            </Stack>
+          </>
         )}
         <Box sx={{ mb: 2 }}>
           <Stack direction="row" spacing={1} flexWrap="wrap" gap={1}>
