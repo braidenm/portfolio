@@ -19,15 +19,19 @@ const Projects = () => (
         </Grid>
         <Grid item xs={12} md={5}>
           <Typography color="text.secondary" sx={{ lineHeight: 1.7 }}>
-            Platform App Lab turns domain models and reviewed specifications into a working product,
-            proportional CI, governed deployments, operational evidence, and real user feedback.
+            Platform App Lab shows the engineering system behind the work. Media Transfer shows a
+            focused product built, tested, deployed, and operated on top of it.
           </Typography>
         </Grid>
       </Grid>
 
       <Box role="list" aria-label="Selected projects">
         {projects.map((project) => (
-          <Box key={project.id} role="listitem" sx={{ maxWidth: 960, mx: 'auto' }}>
+          <Box
+            key={project.id}
+            role="listitem"
+            sx={{ maxWidth: 960, mx: 'auto', '&:not(:last-of-type)': { mb: { xs: 5, md: 7 } } }}
+          >
             <ProjectCard project={project} />
           </Box>
         ))}
