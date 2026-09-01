@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { CheckCircleOutline, GitHub, Launch } from '@mui/icons-material';
 
-const EvidenceList = ({ title, items }) => (
+const EvidenceList = ({ title, items, accent }) => (
   <Box>
     <Typography variant="subtitle2" component="h4" sx={{ mb: 1.25, fontWeight: 700 }}>
       {title}
@@ -20,7 +20,7 @@ const EvidenceList = ({ title, items }) => (
     <Stack spacing={1.1}>
       {items.map((item) => (
         <Stack direction="row" spacing={1} alignItems="flex-start" key={item}>
-          <CheckCircleOutline color="secondary" sx={{ fontSize: 18, mt: '2px', flexShrink: 0 }} />
+          <CheckCircleOutline sx={{ color: `${accent}.main`, fontSize: 18, mt: '2px', flexShrink: 0 }} />
           <Typography variant="body2" color="text.secondary">
             {item}
           </Typography>
@@ -32,6 +32,7 @@ const EvidenceList = ({ title, items }) => (
 
 const ProjectCard = ({ project }) => {
   const hasLiveLink = Boolean(project.liveUrl);
+  const accent = project.accent || 'primary';
 
   return (
     <Card
@@ -40,8 +41,11 @@ const ProjectCard = ({ project }) => {
         display: 'flex',
         flexDirection: 'column',
         border: project.featured ? 2 : 0,
-        borderColor: 'primary.main',
+        borderColor: `${accent}.main`,
         boxShadow: project.featured ? 8 : 1,
+        background: project.featured
+          ? 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(248,250,252,1) 100%)'
+          : 'background.paper',
         transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
         '&:hover': {
           transform: 'translateY(-8px)',
@@ -54,10 +58,10 @@ const ProjectCard = ({ project }) => {
           component="img"
           height={project.featured ? '400' : '200'}
           image={project.imageUrl}
-          alt={project.title}
+          alt={project.imageAlt || project.title}
           sx={{
             objectFit: 'cover',
-            objectPosition: 'center',
+            objectPosition: project.imagePosition || 'center',
             bgcolor: 'grey.200',
             width: '100%',
           }}
@@ -81,10 +85,10 @@ const ProjectCard = ({ project }) => {
         </Box>
       )}
       <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-        {project.featured && (
+        {project.badge && (
           <Chip
-            label="Featured platform build"
-            color="primary"
+            label={project.badge}
+            color={accent}
             size="small"
             sx={{ alignSelf: 'flex-start', mb: 1.5, fontWeight: 700 }}
           />
@@ -120,10 +124,18 @@ const ProjectCard = ({ project }) => {
             <Divider sx={{ mb: 2.5 }} />
             <Stack spacing={2.5} sx={{ mb: 2.5 }}>
               {project.capabilities && (
-                <EvidenceList title="Admin and governance" items={project.capabilities} />
+                <EvidenceList
+                  title={project.capabilitiesTitle || 'Capabilities'}
+                  items={project.capabilities}
+                  accent={accent}
+                />
               )}
               {project.deliveryEvidence && (
-                <EvidenceList title="Spec-driven delivery evidence" items={project.deliveryEvidence} />
+                <EvidenceList
+                  title={project.deliveryEvidenceTitle || 'Delivery evidence'}
+                  items={project.deliveryEvidence}
+                  accent={accent}
+                />
               )}
             </Stack>
           </>
