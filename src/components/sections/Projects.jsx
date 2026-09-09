@@ -11,16 +11,16 @@ const Projects = () => (
       <Grid container spacing={{ xs: 3, md: 8 }} alignItems="end" sx={{ mb: 6 }}>
         <Grid item xs={12} md={7}>
           <Typography component="p" sx={{ color: 'secondary.main', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-            Live engineering system
+            Selected software
           </Typography>
           <Typography variant="h3" component="h2" sx={{ mt: 1.5 }}>
-            See the architecture, delivery system, and controls working together.
+            Projects you can explore
           </Typography>
         </Grid>
         <Grid item xs={12} md={5}>
           <Typography color="text.secondary" sx={{ lineHeight: 1.7 }}>
-            Platform App Lab shows the engineering system behind the work. Media Transfer shows a
-            focused product built, tested, deployed, and operated on top of it.
+            Platform App Lab demonstrates the engineering platform and operational controls. Media
+            Transfer is a working product built and deployed on that platform.
           </Typography>
         </Grid>
       </Grid>
@@ -45,7 +45,7 @@ const Projects = () => (
           rel="noopener noreferrer"
           startIcon={<GitHub />}
         >
-          Browse earlier work on GitHub
+          View more on GitHub
         </Button>
       </Box>
     </Container>

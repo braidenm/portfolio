@@ -4,16 +4,15 @@ export const SECTIONS = {
   WORK_HISTORY: 'work-history',
   SKILLS: 'skills',
   PHILOSOPHY: 'philosophy',
-  LIFECYCLE: 'lifecycle',
   PROJECTS: 'projects',
   CONTACT: 'contact',
 };
 
 export const NAV_ITEMS = [
-  { label: 'Home', section: SECTIONS.HOME },
-  { label: 'About', section: SECTIONS.ABOUT },
+  { label: 'Overview', section: SECTIONS.HOME },
   { label: 'Experience', section: SECTIONS.WORK_HISTORY },
-  { label: 'Philosophy', section: SECTIONS.PHILOSOPHY },
   { label: 'Work', section: SECTIONS.PROJECTS },
+  { label: 'Approach', section: SECTIONS.PHILOSOPHY },
+  { label: 'Skills', section: SECTIONS.SKILLS },
   { label: 'Contact', section: SECTIONS.CONTACT },
 ];

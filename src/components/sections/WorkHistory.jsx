@@ -15,13 +15,13 @@ const WorkHistory = () => {
                 Experience
               </Typography>
               <Typography variant="h3" component="h2" sx={{ mt: 1.5 }}>
-                Evidence over adjectives.
+                Professional experience
               </Typography>
             </Grid>
             <Grid item xs={12} md={5}>
               <Typography color="text.secondary" sx={{ lineHeight: 1.7 }}>
-                Hands-on delivery paired with the planning, communication, and enablement that help
-                product managers and engineering teams move through complex work together.
+                Selected work in platform engineering, system migrations, performance, API design,
+                production reliability, and cross-team delivery.
               </Typography>
             </Grid>
           </Grid>
