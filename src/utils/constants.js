@@ -3,6 +3,7 @@ export const SECTIONS = {
   ABOUT: 'about',
   WORK_HISTORY: 'work-history',
   SKILLS: 'skills',
+  PHILOSOPHY: 'philosophy',
   LIFECYCLE: 'lifecycle',
   PROJECTS: 'projects',
   CONTACT: 'contact',
@@ -12,7 +13,7 @@ export const NAV_ITEMS = [
   { label: 'Home', section: SECTIONS.HOME },
   { label: 'About', section: SECTIONS.ABOUT },
   { label: 'Experience', section: SECTIONS.WORK_HISTORY },
-  { label: 'Lifecycle', section: SECTIONS.LIFECYCLE },
+  { label: 'Philosophy', section: SECTIONS.PHILOSOPHY },
   { label: 'Work', section: SECTIONS.PROJECTS },
   { label: 'Contact', section: SECTIONS.CONTACT },
 ];
