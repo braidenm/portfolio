@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from reportlab.lib import colors
-from reportlab.lib.enums import TA_CENTER, TA_LEFT
+from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import inch
@@ -21,11 +21,9 @@ OUTPUT = ROOT / "public" / "resume" / "Braiden_Miller.pdf"
 
 NAVY = colors.HexColor("#16213D")
 BLUE = colors.HexColor("#1769AA")
-TEAL = colors.HexColor("#16806F")
 INK = colors.HexColor("#243043")
 MUTED = colors.HexColor("#556173")
 RULE = colors.HexColor("#D7DEE8")
-PALE_BLUE = colors.HexColor("#EDF5FC")
 
 
 def build_styles():
@@ -108,24 +106,6 @@ def build_styles():
             textColor=INK,
             spaceAfter=3,
         ),
-        "metric_value": ParagraphStyle(
-            "MetricValue",
-            parent=base["Normal"],
-            fontName="Helvetica-Bold",
-            fontSize=10.5,
-            leading=12,
-            textColor=TEAL,
-            alignment=TA_LEFT,
-        ),
-        "metric_label": ParagraphStyle(
-            "MetricLabel",
-            parent=base["Normal"],
-            fontName="Helvetica",
-            fontSize=7.8,
-            leading=9.5,
-            textColor=MUTED,
-            alignment=TA_LEFT,
-        ),
         "small": ParagraphStyle(
             "Small",
             parent=base["Normal"],
@@ -201,7 +181,7 @@ def build_resume():
 
     story = [
         Paragraph("Braiden J. Miller", styles["name"]),
-        Paragraph("Senior Software Engineer | Product Partner | Platform Builder", styles["title"]),
+        Paragraph("Senior Software Engineer", styles["title"]),
         Paragraph(
             "Golden, Colorado | (219) 743-2686 | "
             '<link href="mailto:braidenjamesmiller@gmail.com" color="#1769AA">braidenjamesmiller@gmail.com</link> | '
@@ -214,45 +194,19 @@ def build_resume():
 
     story.extend(section("Summary", styles))
     story.append(Paragraph(
-        "Senior software engineer with 7+ years delivering distributed platforms and 6 years of prior people leadership. "
-        "Delivers complex platform work on committed timelines by aligning product managers, architecture, and dependent "
-        "teams around testable plans, clear contracts, and reliable releases. Hands-on Java/Kotlin engineer known for "
-        "moving millions of records out of brittle monoliths with reversible cutovers, turning customer-reported defects "
-        "into same-day production fixes, and diagnosing hard performance problems without destabilizing the product.",
+        "Senior software engineer with 7+ years building Java and Kotlin platforms and 6 years of prior people leadership. "
+        "Works with product managers, architects, engineers, analytics teams, and external partners to deliver complex changes "
+        "on schedule. Experience includes extracting domains from monoliths through reversible data migrations, reducing "
+        "slow searches from more than 60 seconds to sub-second results, creating delivery practices that support same-day "
+        "production fixes, and building high-throughput event-driven systems.",
         styles["body"],
     ))
-
-    story.extend(section("Selected outcomes", styles))
-    metrics = [
-        ("On-time launches", "Committed delivery across product, architecture, and dependent teams"),
-        ("Same-day fixes", "Customer defects diagnosed, verified, and released through a safe delivery path"),
-        ("One-click rollback", "High-risk migration cutovers designed to reverse safely"),
-    ]
-    metric_values = [Paragraph(value, styles["metric_value"]) for value, _ in metrics]
-    metric_labels = [Paragraph(label, styles["metric_label"]) for _, label in metrics]
-    metric_table = Table(
-        [metric_values, metric_labels],
-        colWidths=[2.38 * inch, 2.38 * inch, 2.38 * inch],
-    )
-    metric_table.setStyle(TableStyle([
-        ("BACKGROUND", (0, 0), (-1, -1), PALE_BLUE),
-        ("BOX", (0, 0), (-1, -1), 0.6, RULE),
-        ("INNERGRID", (0, 0), (-1, -1), 0.4, RULE),
-        ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("LEFTPADDING", (0, 0), (-1, -1), 8),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 8),
-        ("TOPPADDING", (0, 0), (-1, 0), 6),
-        ("BOTTOMPADDING", (0, 0), (-1, 0), 1),
-        ("TOPPADDING", (0, 1), (-1, 1), 0),
-        ("BOTTOMPADDING", (0, 1), (-1, 1), 6),
-    ]))
-    story.extend([metric_table, Spacer(1, 2)])
 
     story.extend(section("Experience", styles))
     story.append(role_header("Senior Software Engineer II", "Pax8", "2022 - Present", styles))
     story.extend(bullets([
         "Delivered complex platform launches on committed dates by aligning product managers, architecture, analytics, frontend, backend, and partner teams around ADRs, phased plans, and explicit dependencies.",
-        "Moved millions of records out of a brittle monolith into a domain-aligned service with explicit module boundaries; kept old and new systems synchronized and made cutover reversible with one-click rollback.",
+        "Extracted a domain from a monolith into a new service and migrated millions of records. Dual-fed updates to both systems during rollout, verified parity, and retained the original application as the cutback path until the new service was proven in production.",
         "Replaced a search path that exceeded 60 seconds with Elasticsearch in one two-week sprint, restoring sub-second results and enabling a safe relaunch.",
         "Established CI/CD, service and integration testing, and observability patterns that let customer-reported defects move from diagnosis to a verified production fix in the same day.",
         "Designed and load-tested a webhook platform with DDD, CQRS, Kafka, and backpressure; dispatched 10,000 outbound calls in under 30 seconds while protecting downstream services.",
@@ -280,9 +234,9 @@ def build_resume():
         Paragraph("<b>Platform App Lab</b> | Current", styles["role"]),
         Paragraph("Self-hosted portfolio", styles["company"]),
         *bullets([
-            "Build and operate a full-stack Kotlin/Spring and React platform that connects product framing, architecture decisions, implementation, tests, releases, and real-device feedback.",
+            "Build and operate a full-stack Kotlin/Spring and React platform with documented architecture, automated tests, CI/CD, observability, and production administration.",
             "Designed Media Transfer for resilient photo and video batches, guest-friendly share links, media derivatives, retention, and reliable original-quality downloads across desktop, Android, and iPhone.",
-            "Publish release-matched OpenAPI contracts, ADRs, module diagrams, operational risks, and source evidence so reviewers can follow decisions without relying on a private code tour.",
+            "Publish OpenAPI contracts, ADRs, module diagrams, and operations documentation with each release so architecture and production behavior can be reviewed.",
         ], styles),
         Paragraph(
             '<link href="https://app.braidenmiller.com" color="#1769AA">Live app</link> | '

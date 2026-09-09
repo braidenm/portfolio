@@ -6,7 +6,7 @@ export const workHistory = [
     duration: '2022 - Present',
     description: [
       'Delivered platform releases on schedule by aligning product, architecture, analytics, frontend, backend, and partner teams around phased plans and explicit dependencies.',
-      'Migrated millions of records from a monolith into a domain-aligned service. Kept both systems synchronized during cutover and provided one-click rollback.',
+      'Extracted a domain from a monolith into a new service and migrated millions of records. Dual-fed updates to both systems during rollout, verified parity, and kept the original application available as the cutback path until the new service was proven in production.',
       'Replaced a search path that took more than 60 seconds with Elasticsearch, producing sub-second results within one two-week sprint.',
       'Introduced CI/CD, integration testing, and observability patterns that support same-day production fixes for customer-reported defects.',
       'Designed and load-tested a DDD/CQRS webhook platform that dispatched 10,000 calls in under 30 seconds while applying backpressure to protect downstream services.',

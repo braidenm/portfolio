@@ -54,12 +54,23 @@ const ResumeViewer = ({ open, onClose }) => {
           </IconButton>
         </Box>
       </Box>
-      <DialogContent sx={{ p: 0, flex: 1, minHeight: 0 }}>
+      <DialogContent
+        sx={{
+          p: 0,
+          flex: 1,
+          minHeight: 0,
+          display: 'flex',
+          overflow: 'hidden',
+        }}
+      >
         <iframe
-          src="/resume/Braiden_Miller.pdf"
+          src="/resume/Braiden_Miller.pdf#zoom=page-width"
           style={{
+            display: 'block',
+            flex: '1 1 auto',
             width: '100%',
             height: '100%',
+            minHeight: 0,
             border: 'none',
           }}
           title="Braiden Miller resume PDF"
