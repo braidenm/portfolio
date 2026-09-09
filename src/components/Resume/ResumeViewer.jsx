@@ -9,6 +9,8 @@ import {
 } from '@mui/material';
 import { Close, Download } from '@mui/icons-material';
 
+const RESUME_URL = '/resume/Braiden_Miller.pdf?v=20260909-2';
+
 const ResumeViewer = ({ open, onClose }) => {
   return (
     <Dialog
@@ -42,7 +44,7 @@ const ResumeViewer = ({ open, onClose }) => {
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
           <Button
-            href="/resume/Braiden_Miller.pdf"
+            href={RESUME_URL}
             download
             startIcon={<Download />}
             sx={{ color: 'common.white', '&:hover': { bgcolor: 'rgba(255,255,255,0.12)' } }}
@@ -64,7 +66,7 @@ const ResumeViewer = ({ open, onClose }) => {
         }}
       >
         <iframe
-          src="/resume/Braiden_Miller.pdf#zoom=page-width"
+          src={`${RESUME_URL}#zoom=page-width`}
           style={{
             display: 'block',
             flex: '1 1 auto',
