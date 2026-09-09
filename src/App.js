@@ -8,12 +8,11 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/common/ScrollToTop';
 import Hero from './components/sections/Hero';
-import AboutMe from './components/sections/AboutMe';
 import WorkHistory from './components/sections/WorkHistory';
-import Skills from './components/sections/Skills';
-import EngineeringPhilosophy from './components/sections/EngineeringPhilosophy';
-import DevelopmentLifecycle from './components/sections/DevelopmentLifecycle';
 import Projects from './components/sections/Projects';
+import EngineeringPhilosophy from './components/sections/EngineeringPhilosophy';
+import Skills from './components/sections/Skills';
+import AboutMe from './components/sections/AboutMe';
 import Contact from './components/sections/Contact';
 import UnderConstruction from './components/common/UnderConstruction';
 import './App.css';
@@ -23,12 +22,11 @@ const MainLayout = () => (
     <Header />
     <Box component="main" sx={{ flexGrow: 1 }}>
       <Hero />
-      <AboutMe />
       <WorkHistory />
-      <Skills />
-      <EngineeringPhilosophy />
-      <DevelopmentLifecycle />
       <Projects />
+      <EngineeringPhilosophy />
+      <Skills />
+      <AboutMe />
       <Contact />
     </Box>
     <Footer />

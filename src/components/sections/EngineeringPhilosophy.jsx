@@ -14,27 +14,27 @@ import SectionContainer from '../common/SectionContainer';
 
 const engineeringPrinciples = [
   {
-    title: 'Start with domain language',
+    title: 'Model the domain first',
     description:
-      'I work with product partners to name the business capabilities, invariants, failure modes, and ownership boundaries before choosing the implementation shape. The model should explain the business—not mirror the database.',
+      'I work with product partners to define business capabilities, rules, failure cases, and ownership before choosing the implementation. This produces shared terminology and clearer boundaries.',
     icon: AccountTree,
   },
   {
-    title: 'Earn every distributed boundary',
+    title: 'Choose boundaries deliberately',
     description:
-      'I prefer cohesive modules with enforceable contracts until independent ownership, scaling, or deployment makes a service boundary worthwhile. A distributed system should solve a real constraint, not decorate the architecture diagram.',
+      'I prefer cohesive modules with enforceable contracts until ownership, scaling, or deployment needs justify a separate service. This limits network and operational complexity.',
     icon: Api,
   },
   {
-    title: 'Design failure and recovery together',
+    title: 'Design for failure and rollback',
     description:
-      'Timeouts, retries, idempotency, backpressure, compatibility, and partial failure are part of the design. Risky migrations use phased cutovers, observable checkpoints, and a tested rollback path before traffic moves.',
+      'Timeouts, retries, idempotency, backpressure, and partial failure are part of the design. Migrations use phased cutovers, observable checkpoints, and a tested rollback path.',
     icon: PublishedWithChanges,
   },
   {
-    title: 'Operate what you ship',
+    title: 'Build for production operation',
     description:
-      'Correlation IDs, structured logs, bounded metrics, traces, health checks, and useful alerts are product behavior. They shorten the path from a customer report to the failing boundary and a safe production fix.',
+      'Correlation IDs, structured logs, metrics, traces, health checks, and actionable alerts are included with the feature. They make failures easier to find and correct safely.',
     icon: Speed,
   },
 ];
@@ -42,53 +42,53 @@ const engineeringPrinciples = [
 const standards = [
   {
     title: 'DDD + SOLID',
-    description: 'Bounded contexts, ubiquitous language, high cohesion, and dependencies that point toward the domain.',
+    description: 'Bounded contexts, shared domain language, high cohesion, and dependencies directed toward business rules.',
   },
   {
     title: 'OpenAPI 3.1',
-    description: 'Contract-first APIs with stable error shapes, explicit examples, compatibility, and consumer-visible behavior.',
+    description: 'Contract-first APIs with documented behavior, stable errors, examples, and compatibility expectations.',
   },
   {
     title: 'OWASP guidance',
-    description: 'Least privilege, safe session and upload handling, secret redaction, and abuse-aware failure behavior.',
+    description: 'Least privilege, secure session and upload handling, secret redaction, and safe error responses.',
   },
   {
     title: 'Architecture Decision Records',
-    description: 'Durable decisions capture context, options, tradeoffs, consequences, ownership, and removal conditions.',
+    description: 'Important decisions record their context, options, tradeoffs, consequences, and future review conditions.',
   },
   {
     title: 'Testing diamond',
-    description: 'Fast domain tests, strong integration coverage, boundary contracts, and a small set of critical browser flows.',
+    description: 'Fast unit tests, strong integration coverage, boundary contracts, and focused end-to-end checks.',
   },
   {
     title: 'SRE signals',
-    description: 'SLIs, SLOs, latency distributions, error rates, saturation, and alerts tied to an operator action.',
+    description: 'SLIs, SLOs, latency, error rates, saturation, and alerts connected to a specific operator response.',
   },
 ];
 
 const aiWorkflow = [
   {
-    title: 'Specify before prompting',
+    title: 'Define the work',
     description:
-      'A reviewed spec defines the outcome, non-goals, acceptance scenarios, domain terms, contracts, security constraints, failure behavior, observability, and rollout expectations.',
+      'A reviewed specification records the outcome, non-goals, acceptance scenarios, domain terms, contracts, security, failure behavior, and rollout plan.',
     icon: AssignmentTurnedIn,
   },
   {
-    title: 'Keep the repository self-explaining',
+    title: 'Keep documentation current',
     description:
-      'Specs, plans, task slices, ADRs, OpenAPI, diagrams, service guides, and runbooks change with the code. AI works from current repository context instead of undocumented conversation history.',
+      'Specifications, plans, tasks, ADRs, OpenAPI, diagrams, and runbooks change with the code. The repository remains the source of context for people and AI.',
     icon: AutoAwesome,
   },
   {
-    title: 'Ask for evidence, not confidence',
+    title: 'Implement in small slices',
     description:
-      'AI runs the test layers justified by the change, reports exact commands and failures, and verifies contracts, migrations, security, and user-visible behavior before the work is considered complete.',
+      'AI helps implement small changes within the documented architecture. Assumptions and conflicts are raised for review before the scope changes.',
     icon: FactCheck,
   },
   {
-    title: 'Keep judgment and acceptance human',
+    title: 'Verify and review',
     description:
-      'People own the product outcome, architecture tradeoffs, security posture, and release decision. AI accelerates implementation, review, documentation, and verification inside those agreed boundaries.',
+      'Unit, integration, contract, browser, and load tests are selected according to risk. Engineers and stakeholders retain architecture and release approval.',
     icon: Security,
   },
 ];
@@ -107,17 +107,16 @@ const EngineeringPhilosophy = () => (
               textTransform: 'uppercase',
             }}
           >
-            Engineering philosophy
+            Engineering approach
           </Typography>
           <Typography variant="h3" component="h2" sx={{ mt: 1.5 }}>
-            Make complexity legible—and change safe.
+            How I build complex software
           </Typography>
         </Grid>
         <Grid item xs={12} md={5}>
           <Typography color="text.secondary" sx={{ lineHeight: 1.75 }}>
-            I optimize for software a team can understand, test, operate, and evolve without heroics.
-            The goal is not maximum abstraction; it is clear decisions, reliable boundaries, and a
-            safer next change.
+            I use clear domain models, explicit contracts, reversible delivery, and production
+            feedback to keep systems understandable as they grow.
           </Typography>
         </Grid>
       </Grid>
@@ -137,7 +136,7 @@ const EngineeringPhilosophy = () => (
                   bgcolor: 'background.paper',
                 }}
               >
-                <Stack direction="row" spacing={2} alignItems="flex-start">
+                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} alignItems="flex-start">
                   <Box
                     sx={{
                       width: 46,
@@ -169,15 +168,14 @@ const EngineeringPhilosophy = () => (
 
       <Box sx={{ mt: { xs: 6, md: 8 } }}>
         <Typography component="p" sx={{ color: 'secondary.main', fontWeight: 700 }}>
-          Named standards, applied pragmatically
+          Standards and practices
         </Typography>
         <Typography variant="h4" component="h3" sx={{ mt: 1, mb: 1.5, fontWeight: 700 }}>
-          Standards are decision aids, not résumé badges.
+          Standards I apply
         </Typography>
         <Typography color="text.secondary" sx={{ maxWidth: 780, lineHeight: 1.75, mb: 3.5 }}>
-          I use established standards where they reduce ambiguity, protect a boundary, or make
-          quality reviewable. I adapt the implementation to the system rather than applying a pattern
-          mechanically.
+          I use standards when they clarify behavior, protect a boundary, or make quality reviewable.
+          The implementation still depends on the needs and constraints of the system.
         </Typography>
 
         <Grid container spacing={2}>
@@ -204,16 +202,9 @@ const EngineeringPhilosophy = () => (
         </Grid>
 
         <Stack direction="row" useFlexGap flexWrap="wrap" spacing={1} sx={{ mt: 3 }}>
-          {[
-            'Backward-compatible contracts',
-            'Idempotent retries',
-            'Versioned events',
-            'Expand / contract migrations',
-            'Privacy-safe telemetry',
-            'Feature flags and rollback',
-          ].map((practice) => (
-            <Chip key={practice} label={practice} variant="outlined" color="primary" />
-          ))}
+          {['Compatible contracts', 'Idempotent retries', 'Versioned events', 'Reversible migrations'].map(
+            (practice) => <Chip key={practice} label={practice} variant="outlined" color="primary" />,
+          )}
         </Stack>
       </Box>
 
@@ -234,15 +225,15 @@ const EngineeringPhilosophy = () => (
               component="p"
               sx={{ color: 'secondary.light', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}
             >
-              Working with AI
+              AI-assisted development
             </Typography>
             <Typography variant="h4" component="h3" sx={{ mt: 1.5, fontWeight: 700 }}>
-              AI-assisted. Spec-driven. Engineer-owned.
+              How I use AI in development
             </Typography>
             <Typography sx={{ mt: 2, lineHeight: 1.75, opacity: 0.86 }}>
-              I treat AI as a fast implementation and verification partner—not as the source of
-              requirements or architectural authority. Its work is only as trustworthy as the
-              context, constraints, and evidence around it.
+              AI helps with implementation, review, documentation, and testing. It works from reviewed
+              requirements and repository documentation; people retain product, architecture, security,
+              and release decisions.
             </Typography>
           </Grid>
           <Grid item xs={12} md={8}>

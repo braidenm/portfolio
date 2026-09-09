@@ -6,9 +6,10 @@ import ResumeViewer from '../Resume/ResumeViewer';
 import { personalInfo } from '../../data/personalInfo';
 
 const outcomes = [
-  { value: 'On time', label: 'committed launches delivered across product, architecture, and dependent teams' },
-  { value: 'Same day', label: 'customer-reported defects can move from diagnosis to a verified production fix' },
-  { value: '1 click', label: 'rollback built into high-risk migration cutovers before traffic moves' },
+  { value: '60+ sec → <1 sec', label: 'search response improved during a two-week delivery sprint' },
+  { value: 'Millions', label: 'of records migrated with old and new systems kept synchronized' },
+  { value: '10,000 in <30 sec', label: 'webhook deliveries in load testing with downstream protection' },
+  { value: 'Same day', label: 'production fixes for customer-reported defects when risk allows' },
 ];
 
 const ResumePreviewButton = () => {
@@ -72,8 +73,8 @@ const Hero = () => (
             {personalInfo.heroDescription}
           </Typography>
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mt: 4 }}>
-            <Button variant="contained" color="secondary" size="large" href="#projects" endIcon={<ArrowForward />}>
-              See the work
+            <Button variant="contained" color="secondary" size="large" href="#work-history" endIcon={<ArrowForward />}>
+              View experience
             </Button>
             <ResumePreviewButton />
           </Stack>
@@ -96,7 +97,7 @@ const Hero = () => (
               }}
             />
             <Typography component="figcaption" variant="body2" sx={{ mt: 1.5, color: 'rgba(255,255,255,0.66)' }}>
-              Colorado-based. Comfortable with steep problems.
+              Based in Colorado.
             </Typography>
           </Box>
         </Grid>
@@ -106,7 +107,7 @@ const Hero = () => (
         aria-label="Selected engineering outcomes"
         sx={{
           display: 'grid',
-          gridTemplateColumns: { xs: '1fr', sm: 'repeat(3, 1fr)' },
+          gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' },
           gap: 2,
           mt: { xs: 6, md: 8 },
         }}

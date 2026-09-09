@@ -111,15 +111,15 @@ const Contact = () => {
     >
       <Container>
         <Typography variant="h3" component="h2" align="center" gutterBottom sx={{ mb: 6 }}>
-          Let&apos;s Build Something Useful
+          Contact
         </Typography>
         <Typography
           variant="body1"
           align="center"
           sx={{ mt: -4, mb: 6, maxWidth: 760, mx: 'auto', color: 'rgba(255,255,255,0.75)' }}
         >
-          I&apos;m interested in senior engineering roles where product partnership, cross-team clarity,
-          and reliable delivery matter as much as the code.
+          I&apos;m interested in senior software engineering roles focused on platform development,
+          product collaboration, and reliable delivery.
         </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} md={5}>
@@ -217,7 +217,7 @@ const Contact = () => {
                       <GitHub sx={{ fontSize: 48, color: 'primary.main' }} />
                     </Box>
                     <Typography variant="h6" gutterBottom>
-                      Social Media
+                      Profiles
                     </Typography>
                     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1, mt: 1 }}>
                       <Link
@@ -252,7 +252,7 @@ const Contact = () => {
                       <Phone sx={{ fontSize: 48, color: 'primary.main' }} />
                     </Box>
                     <Typography variant="h6" gutterBottom>
-                      Phone Number
+                      Phone
                     </Typography>
                     <Link href={`tel:${personalInfo.phone}`} sx={{ textDecoration: 'none' }} aria-label={`Call ${personalInfo.phone}`}>
                       <Typography variant="body1" color="primary">

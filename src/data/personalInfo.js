@@ -5,9 +5,9 @@ export const personalInfo = {
   phone: '(219)743-2686',
   github: 'https://github.com/braidenm',
   linkedin: 'https://www.linkedin.com/in/braiden-miller-64173015/',
-  aboutMe: 'I turn ambiguous, cross-system work into a shared plan that product managers, engineers, and partner teams can execute together. I stay hands-on while making ownership, tradeoffs, tests, rollout, and recovery clear - so teams decide faster and ship reliable software with fewer surprises.',
-  heroText: 'Complex systems. Clear decisions. Reliable delivery.',
-  heroDescription: 'I partner across product, architecture, and dependent teams to deliver complex Java and Kotlin platforms on committed timelines, make risky migrations reversible, and shorten the path from customer-reported bugs to safe production fixes, often within the same day.',
+  aboutMe: 'I am a Colorado-based senior software engineer with seven years of professional experience building Java and Kotlin systems. I work closely with product managers, engineers, and dependent teams from problem definition through production support.',
+  heroText: 'Senior software engineer building reliable platforms and products.',
+  heroDescription: 'Seven years building Java and Kotlin systems. I turn complex requirements into well-tested software, safe migrations, and dependable production releases through close collaboration with product and engineering teams.',
 };
 
 export const education = {
@@ -49,5 +49,5 @@ export const certifications = {
 };
 
 export const experience = {
-  description: 'Seven years building software and six prior years leading people. That background still shows up in how I coach, facilitate difficult conversations, and connect technical work to business outcomes.',
+  description: 'Before software engineering, I spent six years leading people. That experience shapes how I facilitate decisions, document tradeoffs, mentor engineers, and keep cross-team delivery moving.',
 };

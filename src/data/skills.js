@@ -1,40 +1,18 @@
-export const skills = [
+export const skillGroups = [
   {
-    name: 'Shape the right problem',
-    icon: 'Code',
-    description: 'Clarify the user outcome, surface assumptions, and split ambiguous work into testable slices with product partners.',
+    name: 'Backend and architecture',
+    skills: ['Java', 'Kotlin', 'Spring Boot', 'Axon', 'DDD', 'CQRS', 'REST / OpenAPI'],
   },
   {
-    name: 'Align across boundaries',
-    icon: 'Group',
-    description: 'Bring dependent teams into the design early so contracts, ownership, and sequencing are clear before they become expensive.',
+    name: 'Data and messaging',
+    skills: ['Kafka', 'PostgreSQL', 'MongoDB', 'Elasticsearch / OpenSearch', 'Event-driven systems'],
   },
   {
-    name: 'Prove the hard parts',
-    icon: 'Storage',
-    description: 'Use prototypes, load tests, real-device feedback, and observability to answer risky questions before scaling a solution.',
+    name: 'Cloud and delivery',
+    skills: ['AWS', 'Azure', 'Kubernetes', 'Docker', 'GitHub Actions', 'CI/CD', 'Observability'],
   },
   {
-    name: 'Leave the team faster',
-    icon: 'TrendingUp',
-    description: 'Turn decisions into shared standards, examples, and feedback loops that help engineers deliver independently with fewer surprises.',
+    name: 'Frontend and quality',
+    skills: ['React', 'TypeScript', 'Playwright', 'Contract testing', 'Integration testing', 'Load testing'],
   },
-];
-
-export const techStack = [
-  { name: 'Java' },
-  { name: 'Kotlin' },
-  { name: 'Spring Boot' },
-  { name: 'Kafka' },
-  { name: 'PostgreSQL' },
-  { name: 'MongoDB' },
-  { name: 'Elasticsearch / OpenSearch' },
-  { name: 'React' },
-  { name: 'TypeScript' },
-  { name: 'Axon' },
-  { name: 'AWS / Azure' },
-  { name: 'Kubernetes' },
-  { name: 'Docker' },
-  { name: 'Honeycomb' },
-  { name: 'Contract and load testing' },
 ];

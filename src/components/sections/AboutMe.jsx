@@ -7,8 +7,12 @@ import { education, certifications, experience, personalInfo } from '../../data/
 const background = [
   { icon: Code, value: '7 years', label: 'professional software delivery' },
   { icon: Groups, value: '6 years', label: 'people leadership before engineering' },
-  { icon: School, value: 'B.S. + Java', label: `${education.wgu.name} and ${education.skillDistillery.name}` },
-  { icon: WorkspacePremium, value: 'Certified', label: `${certifications.javaOracle.name} and ${certifications.comptia.name}` },
+  { icon: School, value: 'B.S.', label: `Business Management, ${education.wgu.name}` },
+  {
+    icon: WorkspacePremium,
+    value: 'Java + Project+',
+    label: `${certifications.javaOracle.name} and ${certifications.comptia.name}`,
+  },
 ];
 
 const AboutMe = () => (
@@ -20,7 +24,7 @@ const AboutMe = () => (
             About
           </Typography>
           <Typography variant="h3" component="h2" sx={{ mt: 1.5, mb: 3, maxWidth: 520 }}>
-            Collaboration that ends in working software.
+            Background and qualifications
           </Typography>
         </Grid>
         <Grid item xs={12} md={7}>
