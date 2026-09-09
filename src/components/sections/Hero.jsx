@@ -7,7 +7,7 @@ import { personalInfo } from '../../data/personalInfo';
 
 const outcomes = [
   { value: '60+ sec → <1 sec', label: 'search response improved during a two-week delivery sprint' },
-  { value: 'Millions', label: 'of records migrated with old and new systems kept synchronized' },
+  { value: 'Millions', label: 'of records migrated while both systems stayed current through cutover' },
   { value: '10,000 in <30 sec', label: 'webhook deliveries in load testing with downstream protection' },
   { value: 'Same day', label: 'production fixes for customer-reported defects when risk allows' },
 ];
