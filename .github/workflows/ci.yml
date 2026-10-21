@@ -27,6 +27,11 @@ jobs:
       - run: npm test -- --watchAll=false --runInBand
         env:
           CI: true
+      - name: Verify generated resume
+        run: |
+          python3 -m venv "$RUNNER_TEMP/resume-venv"
+          "$RUNNER_TEMP/resume-venv/bin/python" -m pip install -r scripts/resume-requirements.txt
+          "$RUNNER_TEMP/resume-venv/bin/python" scripts/test_resume.py
       - run: npm run build
         env:
           CI: true

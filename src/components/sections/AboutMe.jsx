@@ -5,7 +5,7 @@ import SectionContainer from '../common/SectionContainer';
 import { education, certifications, experience, personalInfo } from '../../data/personalInfo';
 
 const background = [
-  { icon: Groups, value: '6 years', label: 'people leadership before engineering' },
+  { icon: Groups, value: '7+ years', label: 'multi-unit retail management before engineering' },
   { icon: School, value: 'B.S.', label: `Business Management, ${education.wgu.name}` },
   {
     icon: WorkspacePremium,

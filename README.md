@@ -8,7 +8,7 @@ A personal portfolio at [braidenmiller.com](https://braidenmiller.com/) focused 
 - The first screen highlights backend implementation and collaboration; the following band summarizes reversible migration, search performance, and webhook load-test outcomes.
 - The personal app is a modular monolith with partial ports/adapters adoption, not a claim of universal architectural compliance. Production Kafka, OpenFGA, federated OIDC, and MCP are not enabled.
 - Native iPhone share-sheet acceptance remains a physical-device check, not a guarantee from browser automation.
-- [Positioning record](docs/backend-positioning.md) explains source boundaries, verification, and deferred work. This slice does not change the resume PDF, its versioned URL, contact behavior, dependencies, runtime, or release permissions.
+- [Positioning record](docs/backend-positioning.md) explains source boundaries and deferred work. The subsequent [resume refresh](docs/resume-maintenance.md) updates confirmed career evidence and public downloads without changing contact behavior, runtime or release permissions.
 
 ## Technology Stack
 
