@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import { Close, Download } from '@mui/icons-material';
 
-const RESUME_URL = '/resume/Braiden_Miller.pdf?v=20260909-2';
+const RESUME_URL = '/resume/Braiden_Miller.pdf?v=20261020-1';
 
 const ResumeViewer = ({ open, onClose }) => {
   return (

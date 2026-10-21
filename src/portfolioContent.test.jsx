@@ -115,15 +115,26 @@ test('public metadata matches backend positioning without private application co
   expect(html).not.toMatch(/Collectors|interview/i);
 });
 
-test('the resume preview and download keep the existing versioned PDF URL', () => {
+test('the resume preview and download use the current versioned PDF URL', () => {
   const source = readFileSync(path.join(process.cwd(), 'src/components/Resume/ResumeViewer.jsx'), 'utf8');
-  expect(source).toContain("const RESUME_URL = '/resume/Braiden_Miller.pdf?v=20260909-2'");
+  expect(source).toContain("const RESUME_URL = '/resume/Braiden_Miller.pdf?v=20261020-1'");
   expect(source).toContain('href={RESUME_URL}');
   expect(source).toContain('src={`${RESUME_URL}#zoom=page-width`}');
   const hero = renderSection(<Hero />);
   const preview = [...hero.querySelectorAll('button')].find((button) => button.textContent.includes('Preview resume'));
   act(() => preview.click());
-  expect(document.querySelector('iframe').getAttribute('src')).toBe('/resume/Braiden_Miller.pdf?v=20260909-2#zoom=page-width');
-  expect(document.querySelector('a[download]').getAttribute('href')).toBe('/resume/Braiden_Miller.pdf?v=20260909-2');
+  expect(document.querySelector('iframe').getAttribute('src')).toBe('/resume/Braiden_Miller.pdf?v=20261020-1#zoom=page-width');
+  expect(document.querySelector('a[download]').getAttribute('href')).toBe('/resume/Braiden_Miller.pdf?v=20261020-1');
   act(() => document.querySelector('[aria-label="Close resume preview"]').click());
+});
+
+test('resume source retains confirmed backend facts and excludes AI content', () => {
+  const source = readFileSync(path.join(process.cwd(), 'scripts/generate_resume.py'), 'utf8');
+  for (const skill of ['Auth0', 'Terraform', 'Lucene', 'semantic search', 'tenant-level KMS', 'SLOs', 'Angular 2+']) {
+    expect(source).toContain(skill);
+  }
+  expect(source).toContain('7+ years of prior multi-unit retail management');
+  expect(source).toContain('Load testing dispatched');
+  expect(source).not.toMatch(/\bAI\b|\bLLM\b|artificial intelligence|6 years of prior/i);
+  expect(readFileSync(path.join(process.cwd(), 'public/resume/Braiden_Miller.pdf')).subarray(0, 5).toString()).toBe('%PDF-');
 });

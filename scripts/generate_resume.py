@@ -1,285 +1,154 @@
+"""Canonical resume generator; mirror this source and PDF into Platform Demo."""
+
+import argparse
 from pathlib import Path
 
 from reportlab.lib import colors
-from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.pagesizes import letter
-from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
+from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import inch
-from reportlab.platypus import (
-    KeepTogether,
-    PageBreak,
-    Paragraph,
-    SimpleDocTemplate,
-    Spacer,
-    Table,
-    TableStyle,
-)
+from reportlab.platypus import KeepTogether, PageBreak, Paragraph, SimpleDocTemplate, Spacer
 
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "public" / "resume" / "Braiden_Miller.pdf"
-
-NAVY = colors.HexColor("#16213D")
-BLUE = colors.HexColor("#1769AA")
-INK = colors.HexColor("#243043")
-MUTED = colors.HexColor("#556173")
-RULE = colors.HexColor("#D7DEE8")
+INK = colors.HexColor("#202C37")
+ACCENT = colors.HexColor("#155B75")
+MUTED = colors.HexColor("#4D5964")
 
 
 def build_styles():
-    base = getSampleStyleSheet()
+    body = ParagraphStyle("Body", fontName="Helvetica", fontSize=10, leading=14, textColor=INK, spaceAfter=6)
     return {
-        "name": ParagraphStyle(
-            "Name",
-            parent=base["Normal"],
-            fontName="Helvetica-Bold",
-            fontSize=24,
-            leading=27,
-            textColor=NAVY,
-            alignment=TA_CENTER,
-            spaceAfter=2,
-        ),
-        "title": ParagraphStyle(
-            "Title",
-            parent=base["Normal"],
-            fontName="Helvetica-Bold",
-            fontSize=11,
-            leading=14,
-            textColor=BLUE,
-            alignment=TA_CENTER,
-            spaceAfter=5,
-        ),
-        "contact": ParagraphStyle(
-            "Contact",
-            parent=base["Normal"],
-            fontName="Helvetica",
-            fontSize=8.6,
-            leading=11,
-            textColor=MUTED,
-            alignment=TA_CENTER,
-            spaceAfter=8,
-        ),
-        "section": ParagraphStyle(
-            "Section",
-            parent=base["Heading2"],
-            fontName="Helvetica-Bold",
-            fontSize=10.5,
-            leading=13,
-            textColor=NAVY,
-            spaceBefore=7,
-            spaceAfter=4,
-            borderWidth=0,
-        ),
-        "body": ParagraphStyle(
-            "Body",
-            parent=base["Normal"],
-            fontName="Helvetica",
-            fontSize=9,
-            leading=12.2,
-            textColor=INK,
-            spaceAfter=4,
-        ),
-        "role": ParagraphStyle(
-            "Role",
-            parent=base["Normal"],
-            fontName="Helvetica-Bold",
-            fontSize=10,
-            leading=12,
-            textColor=NAVY,
-        ),
-        "company": ParagraphStyle(
-            "Company",
-            parent=base["Normal"],
-            fontName="Helvetica",
-            fontSize=9,
-            leading=11,
-            textColor=MUTED,
-        ),
-        "bullet": ParagraphStyle(
-            "Bullet",
-            parent=base["Normal"],
-            fontName="Helvetica",
-            fontSize=8.8,
-            leading=11.5,
-            leftIndent=10,
-            firstLineIndent=-8,
-            textColor=INK,
-            spaceAfter=3,
-        ),
-        "small": ParagraphStyle(
-            "Small",
-            parent=base["Normal"],
-            fontName="Helvetica",
-            fontSize=8.4,
-            leading=11,
-            textColor=INK,
-            spaceAfter=3,
-        ),
+        "name": ParagraphStyle("Name", parent=body, fontName="Helvetica-Bold", fontSize=25, leading=29, spaceAfter=4),
+        "title": ParagraphStyle("Title", parent=body, fontName="Helvetica-Bold", fontSize=11, leading=15, textColor=ACCENT),
+        "contact": ParagraphStyle("Contact", parent=body, fontSize=9.2, leading=13, textColor=MUTED, spaceAfter=10),
+        "section": ParagraphStyle("Section", parent=body, fontName="Helvetica-Bold", fontSize=10.5, leading=14,
+                                  textColor=ACCENT, spaceBefore=12, spaceAfter=7, keepWithNext=True),
+        "role": ParagraphStyle("Role", parent=body, fontName="Helvetica-Bold", fontSize=10.5, leading=14,
+                               spaceAfter=2, keepWithNext=True),
+        "company": ParagraphStyle("Company", parent=body, textColor=MUTED, spaceAfter=7, keepWithNext=True),
+        "body": body,
+        "bullet": ParagraphStyle("Bullet", parent=body, leftIndent=11, firstLineIndent=-9, spaceAfter=7),
+        "skill": ParagraphStyle("Skill", parent=body, fontSize=9.6, leading=13.5, spaceAfter=5),
     }
 
 
 def section(title, styles):
+    return Paragraph(title.upper(), styles["section"])
+
+
+def role(title, company, dates, items, styles):
     return [
-        Paragraph(title.upper(), styles["section"]),
-        Table([[""]], colWidths=[7.3 * inch], rowHeights=[1], style=TableStyle([
-            ("BACKGROUND", (0, 0), (-1, -1), BLUE),
-            ("LEFTPADDING", (0, 0), (-1, -1), 0),
-            ("RIGHTPADDING", (0, 0), (-1, -1), 0),
-            ("TOPPADDING", (0, 0), (-1, -1), 0),
-            ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
-        ])),
-        Spacer(1, 4),
+        Paragraph(title, styles["role"]),
+        Paragraph(f"{company} | {dates}", styles["company"]),
+        *[Paragraph(f"- {item}", styles["bullet"]) for item in items],
     ]
-
-
-def role_header(role, company, dates, styles):
-    table = Table(
-        [[Paragraph(role, styles["role"]), Paragraph(dates, styles["company"])],
-         [Paragraph(company, styles["company"]), ""]],
-        colWidths=[5.85 * inch, 1.45 * inch],
-    )
-    table.setStyle(TableStyle([
-        ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("ALIGN", (1, 0), (1, 0), "RIGHT"),
-        ("LEFTPADDING", (0, 0), (-1, -1), 0),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 0),
-        ("TOPPADDING", (0, 0), (-1, -1), 0),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
-    ]))
-    return table
-
-
-def bullets(items, styles):
-    return [Paragraph(f"- {item}", styles["bullet"]) for item in items]
 
 
 def page_footer(canvas, doc):
     canvas.saveState()
-    canvas.setStrokeColor(RULE)
-    canvas.setLineWidth(0.5)
-    canvas.line(doc.leftMargin, 0.42 * inch, letter[0] - doc.rightMargin, 0.42 * inch)
-    canvas.setFont("Helvetica", 7.5)
+    canvas.setFont("Helvetica", 8)
     canvas.setFillColor(MUTED)
-    canvas.drawString(doc.leftMargin, 0.27 * inch, "Braiden Miller - Senior Software Engineer")
-    canvas.drawRightString(letter[0] - doc.rightMargin, 0.27 * inch, f"Page {doc.page}")
+    canvas.drawString(doc.leftMargin, 0.30 * inch, "Braiden Miller | Backend Engineering")
+    canvas.drawRightString(letter[0] - doc.rightMargin, 0.30 * inch, f"{doc.page} / 2")
     canvas.restoreState()
 
 
-def build_resume():
+def build_resume(output=OUTPUT):
     styles = build_styles()
+    output = Path(output)
+    output.parent.mkdir(parents=True, exist_ok=True)
     doc = SimpleDocTemplate(
-        str(OUTPUT),
-        pagesize=letter,
-        rightMargin=0.6 * inch,
-        leftMargin=0.6 * inch,
-        topMargin=0.46 * inch,
-        bottomMargin=0.55 * inch,
-        title="Braiden Miller - Senior Software Engineer Resume",
-        author="Braiden Miller",
-        subject="Senior software engineering, product partnership, and platform delivery",
+        str(output), pagesize=letter, leftMargin=0.65 * inch, rightMargin=0.65 * inch,
+        topMargin=0.5 * inch, bottomMargin=0.6 * inch,
+        title="Braiden Miller - Senior Backend Software Engineer",
+        author="Braiden Miller", subject="Backend engineering, distributed systems and technical leadership",
+        invariant=1,
     )
-
     story = [
         Paragraph("Braiden J. Miller", styles["name"]),
-        Paragraph("Senior Software Engineer", styles["title"]),
+        Paragraph("Senior Software Engineer | Backend &amp; Distributed Systems", styles["title"]),
         Paragraph(
             "Golden, Colorado | (219) 743-2686 | "
-            '<link href="mailto:braidenjamesmiller@gmail.com" color="#1769AA">braidenjamesmiller@gmail.com</link> | '
-            '<link href="https://www.braidenmiller.com" color="#1769AA">Portfolio</link> | '
-            '<link href="https://www.linkedin.com/in/braiden-miller-64173015/" color="#1769AA">LinkedIn</link> | '
-            '<link href="https://github.com/braidenm" color="#1769AA">GitHub</link>',
+            '<link href="mailto:braidenjamesmiller@gmail.com" color="#155B75">braidenjamesmiller@gmail.com</link><br/>'
+            '<link href="https://www.braidenmiller.com" color="#155B75">braidenmiller.com</link> | '
+            '<link href="https://www.linkedin.com/in/braiden-miller-64173015/" color="#155B75">LinkedIn</link> | '
+            '<link href="https://github.com/braidenm" color="#155B75">github.com/braidenm</link>',
             styles["contact"],
         ),
-    ]
-
-    story.extend(section("Summary", styles))
-    story.append(Paragraph(
-        "Senior software engineer with 7+ years building Java and Kotlin platforms and 6 years of prior people leadership. "
-        "Works with product managers, architects, engineers, analytics teams, and external partners to deliver complex changes "
-        "on schedule. Experience includes extracting domains from monoliths through reversible data migrations, reducing "
-        "slow searches from more than 60 seconds to sub-second results, creating delivery practices that support same-day "
-        "production fixes, and building high-throughput event-driven systems.",
-        styles["body"],
-    ))
-
-    story.extend(section("Experience", styles))
-    story.append(role_header("Senior Software Engineer II", "Pax8", "2022 - Present", styles))
-    story.extend(bullets([
-        "Delivered complex platform launches on committed dates by aligning product managers, architecture, analytics, frontend, backend, and partner teams around ADRs, phased plans, and explicit dependencies.",
-        "Extracted a domain from a monolith into a new service and migrated millions of records. Dual-fed updates to both systems during rollout, verified parity, and retained the original application as the cutback path until the new service was proven in production.",
-        "Replaced a search path that exceeded 60 seconds with Elasticsearch in one two-week sprint, restoring sub-second results and enabling a safe relaunch.",
-        "Established CI/CD, service and integration testing, and observability patterns that let customer-reported defects move from diagnosis to a verified production fix in the same day.",
-        "Designed and load-tested a webhook platform with DDD, CQRS, Kafka, and backpressure; dispatched 10,000 outbound calls in under 30 seconds while protecting downstream services.",
-        "Created API-first standards, shared libraries, testing patterns, and practical coaching that helped frontend, backend, analytics, and partner teams deliver against clearer contracts.",
-        "Delivered cloud AI provisioning and LLM gateway foundations under an aggressive launch timeline, coordinating with vendor and internal specialists to close authentication and ownership gaps.",
-    ], styles))
-
-    story.append(Spacer(1, 4))
-    story.append(role_header("Software Engineer", "ZenPlanner / Daxko", "2020 - 2022", styles))
-    story.extend(bullets([
-        "Collaborated on a greenfield microservices platform supported by CI/CD, contract tests, and unit, service, integration, and end-to-end test suites.",
-        "Built complex Stripe-backed subscription and billing flows covering prorates, split funding, multiple locations, partial payments, refunds, and varied billing schedules.",
-        "Used Kafka, API gateways, webhooks, and documented public APIs to deliver reliable financial workflows across team and vendor boundaries.",
-    ], styles))
-    story.append(PageBreak())
-    story.extend(section("Experience continued", styles))
-    story.append(role_header("Software Developer II", "NexGen Technologies", "2019 - 2020", styles))
-    story.extend(bullets([
-        "Developed and optimized microservices in a large production application while collaborating through design reviews and pair programming.",
-        "Reduced monolith coupling by extracting reusable components and added tests, services, and APIs for incremental delivery.",
-    ], styles))
-
-    story.extend(section("Selected engineering work", styles))
-    project = [
-        Paragraph("<b>Platform App Lab</b> | Current", styles["role"]),
-        Paragraph("Self-hosted portfolio", styles["company"]),
-        *bullets([
-            "Build and operate a full-stack Kotlin/Spring and React platform with documented architecture, automated tests, CI/CD, observability, and production administration.",
-            "Designed Media Transfer for resilient photo and video batches, guest-friendly share links, media derivatives, retention, and reliable original-quality downloads across desktop, Android, and iPhone.",
-            "Publish OpenAPI contracts, ADRs, module diagrams, and operations documentation with each release so architecture and production behavior can be reviewed.",
-        ], styles),
+        section("Summary", styles),
         Paragraph(
-            '<link href="https://app.braidenmiller.com" color="#1769AA">Live app</link> | '
-            '<link href="https://github.com/braidenm/platform-demo" color="#1769AA">Source</link>',
-            styles["small"],
+            "Senior software engineer building Java and Kotlin backend systems since 2019. Delivers API-first services, "
+            "event-driven workflows and secure integrations, with hands-on ownership from architecture through production. "
+            "Combines technical leadership with 7+ years of prior multi-unit retail management, balancing business needs, "
+            "delivery risk and technical debt.", styles["body"],
         ),
+        section("Professional Experience", styles),
+        *role("Senior Software Engineer II", "Pax8", "2022 - Present", [
+            "Extracted a domain from a monolith and migrated millions of records while keeping both systems synchronized; "
+            "verified parity and retained a tested rollback path through cutover.",
+            "Replaced a search path taking more than 60 seconds with Elasticsearch in one two-week sprint, "
+            "achieving sub-second results and enabling a relaunch.",
+            "Designed an idempotent webhook platform using Kafka, DDD and CQRS. Load testing dispatched "
+            "10,000 outbound calls in under 30 seconds; backpressure protected downstream services.",
+            "Implemented Auth0 authentication and fine-grained authorization (FGA) for multi-tenant services.",
+            "Secured sensitive data with tenant-level KMS encryption. Diagnosed redundant encryption work and "
+            "reduced daily KMS calls from more than 10,000 to fewer than 100.",
+            "Built search capabilities using Lucene-syntax queries and semantic search.",
+            "Established API-first standards, documented public APIs, shared libraries and boundary-focused testing patterns.",
+            "Applied Axon-based DDD/CQRS and ports and adapters. Used modular monoliths where domain boundaries "
+            "were unclear, weighing service extraction against business needs and operational complexity.",
+            "Owned production behavior through distributed traces, metrics, SLOs and alerting; improved diagnosis "
+            "and resolution of customer-reported defects.",
+            "Led technical planning and coached engineers across product and dependent teams, making "
+            "architecture tradeoffs, delivery dependencies and technical debt explicit.",
+        ], styles),
+        PageBreak(),
+        section("Professional Experience Continued", styles),
+        *role("Software Engineer", "Zen Planner / Daxko", "2020 - 2022", [
+            "Built greenfield microservices with CI/CD, contract tests and unit, integration and end-to-end coverage.",
+            "Implemented Stripe-backed billing for proration, split funding, multiple locations, partial payments, "
+            "refunds and varied subscription schedules.",
+            "Integrated Kafka, webhooks, API gateways and documented public APIs across team and vendor boundaries.",
+        ], styles),
+        Spacer(1, 5),
+        *role("Software Developer II", "NexGen Technologies", "2019 - 2020", [
+            "Developed and optimized Java/Spring services in a large production application through design reviews "
+            "and pair programming.",
+            "Reduced monolith coupling by extracting reusable components and adding tests and APIs for incremental delivery.",
+        ], styles),
+        section("Technical Skills", styles),
+        Paragraph("<b>Backend:</b> Java, Kotlin, Spring Boot, Axon Framework, REST, OpenAPI, DDD, CQRS, ports and adapters", styles["skill"]),
+        Paragraph("<b>Data and messaging:</b> PostgreSQL, MongoDB, MySQL, Elasticsearch/OpenSearch, Kafka, Lucene, semantic search", styles["skill"]),
+        Paragraph("<b>Identity and security:</b> Auth0, fine-grained authorization, tenant-level KMS encryption", styles["skill"]),
+        Paragraph("<b>Cloud and delivery:</b> AWS, Terraform, Docker, Kubernetes, GitHub Actions, CI/CD", styles["skill"]),
+        Paragraph("<b>Quality and operations:</b> Distributed tracing, metrics, SLOs, alerting, Honeycomb, contract/integration/load testing", styles["skill"]),
+        Paragraph("<b>Frontend:</b> React, TypeScript, Angular (AngularJS 1.x and Angular 2+)", styles["skill"]),
+        section("Personal Engineering Project", styles),
+        KeepTogether([
+            Paragraph("Platform App Lab / Media Transfer", styles["role"]),
+            Paragraph(
+                "Build and operate a self-hosted Kotlin/Spring Boot modular platform with a React client, "
+                "Axon-backed domain lifecycles and selected provider ports/adapters. Publish release-matched "
+                "OpenAPI, ADRs and diagrams alongside automated tests, deployment and operational tooling.", styles["body"],
+            ),
+            Paragraph(
+                '<link href="https://app.braidenmiller.com/about/developer/overview" color="#155B75">Architecture and APIs</link> | '
+                '<link href="https://github.com/braidenm/platform-demo" color="#155B75">Source code</link>', styles["skill"],
+            ),
+        ]),
+        section("Education and Certifications", styles),
+        Paragraph("<b>B.S., Business Management</b> | Western Governors University | 2017", styles["skill"]),
+        Paragraph("<b>Full Stack Java Program</b> | Skill Distillery | 2019", styles["skill"]),
+        Paragraph("Oracle Certified Associate, Java SE 8 Programmer I | CompTIA Project+", styles["skill"]),
     ]
-    story.append(KeepTogether(project))
-
-    story.extend(section("Technical profile", styles))
-    story.append(Paragraph(
-        "<b>Languages and frameworks:</b> Java, Kotlin, TypeScript, React, Spring Boot, Axon Framework, Playwright",
-        styles["small"],
-    ))
-    story.append(Paragraph(
-        "<b>Architecture and data:</b> Event-driven systems, Kafka, CQRS, DDD, REST/OpenAPI, PostgreSQL, MongoDB, MySQL, Elasticsearch/OpenSearch",
-        styles["small"],
-    ))
-    story.append(Paragraph(
-        "<b>Delivery and quality:</b> Docker, Kubernetes, CI/CD, GitHub Actions, AWS, Azure, Honeycomb, contract testing, integration testing, load testing, end-to-end testing",
-        styles["small"],
-    ))
-
-    story.extend(section("Education and certifications", styles))
-    education_table = Table([
-        [Paragraph("<b>Bachelor of Science, Business Management</b><br/>Western Governors University, 2017", styles["small"]),
-         Paragraph("<b>Full Stack Java Program</b><br/>Skill Distillery, 2019", styles["small"])],
-        [Paragraph("<b>Oracle Certified Associate</b><br/>Java SE 8 Programmer I", styles["small"]),
-         Paragraph("<b>CompTIA Project+</b><br/>Project planning and stakeholder communication", styles["small"])],
-    ], colWidths=[3.65 * inch, 3.65 * inch])
-    education_table.setStyle(TableStyle([
-        ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("LEFTPADDING", (0, 0), (-1, -1), 0),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 10),
-        ("TOPPADDING", (0, 0), (-1, -1), 0),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
-    ]))
-    story.append(education_table)
-
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     doc.build(story, onFirstPage=page_footer, onLaterPages=page_footer)
 
 
 if __name__ == "__main__":
-    build_resume()
-    print(OUTPUT)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, default=OUTPUT)
+    args = parser.parse_args()
+    build_resume(args.output)
+    print(args.output)

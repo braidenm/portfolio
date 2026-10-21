@@ -50,5 +50,5 @@ export const certifications = {
 };
 
 export const experience = {
-  description: 'Before software engineering, I spent six years leading people. That experience shapes how I facilitate decisions, document tradeoffs, mentor engineers, and keep cross-team delivery moving.',
+  description: 'Before software engineering, I spent more than seven years in multi-unit retail management. That experience shapes how I lead technical work, coach engineers, document tradeoffs, and balance business needs with technical debt.',
 };
