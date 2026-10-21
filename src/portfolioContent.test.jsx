@@ -48,7 +48,8 @@ test('professional outcomes retain migration, search and load-test context', () 
   expect(professionalOutcomes).toHaveLength(3);
   expect(outcomes.textContent).toContain('Selected professional outcomes');
   expect(outcomes.textContent).toMatch(/Millions of records.*synchronized systems, parity checks, and a rollback path/);
-  expect(outcomes.textContent).toMatch(/60\+ seconds to sub-second.*two-week sprint/);
+  expect(outcomes.textContent).toMatch(/60\+ seconds to sub-second.*Elasticsearch/);
+  expect(outcomes.textContent).not.toContain('two-week');
   expect(outcomes.textContent).toMatch(/10,000 calls dispatched.*under 30 seconds during a webhook load test/);
   expect(outcomes.textContent).toContain('Backpressure protected downstream services');
 });
@@ -64,6 +65,8 @@ test('employer roles and chronology remain unchanged', () => {
   expect(experience.textContent).toContain('10,000 calls in under 30 seconds');
   expect(experience.textContent).toContain('load-tested');
   expect(experience.textContent).toContain('API-first standards');
+  expect(experience.textContent).toContain('Extracted multiple domains');
+  expect(experience.textContent).not.toContain('two-week');
 });
 
 test('personal projects stay separate from professional outcomes and explain adoption limits', () => {
@@ -117,14 +120,14 @@ test('public metadata matches backend positioning without private application co
 
 test('the resume preview and download use the current versioned PDF URL', () => {
   const source = readFileSync(path.join(process.cwd(), 'src/components/Resume/ResumeViewer.jsx'), 'utf8');
-  expect(source).toContain("const RESUME_URL = '/resume/Braiden_Miller.pdf?v=20261020-1'");
+  expect(source).toContain("const RESUME_URL = '/resume/Braiden_Miller.pdf?v=20261020-2'");
   expect(source).toContain('href={RESUME_URL}');
   expect(source).toContain('src={`${RESUME_URL}#zoom=page-width`}');
   const hero = renderSection(<Hero />);
   const preview = [...hero.querySelectorAll('button')].find((button) => button.textContent.includes('Preview resume'));
   act(() => preview.click());
-  expect(document.querySelector('iframe').getAttribute('src')).toBe('/resume/Braiden_Miller.pdf?v=20261020-1#zoom=page-width');
-  expect(document.querySelector('a[download]').getAttribute('href')).toBe('/resume/Braiden_Miller.pdf?v=20261020-1');
+  expect(document.querySelector('iframe').getAttribute('src')).toBe('/resume/Braiden_Miller.pdf?v=20261020-2#zoom=page-width');
+  expect(document.querySelector('a[download]').getAttribute('href')).toBe('/resume/Braiden_Miller.pdf?v=20261020-2');
   act(() => document.querySelector('[aria-label="Close resume preview"]').click());
 });
 

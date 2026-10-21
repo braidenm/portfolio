@@ -86,15 +86,15 @@ def build_resume(output=OUTPUT):
         ),
         section("Professional Experience", styles),
         *role("Senior Software Engineer II", "Pax8", "2022 - Present", [
-            "Extracted a domain from a monolith and migrated millions of records while keeping both systems synchronized; "
-            "verified parity and retained a tested rollback path through cutover.",
-            "Replaced a search path taking more than 60 seconds with Elasticsearch in one two-week sprint, "
+            "Extracted multiple domains from a monolith into services and migrated millions of records while keeping "
+            "old and new systems synchronized; verified parity and retained tested rollback paths through cutover.",
+            "Replaced a search path taking more than 60 seconds with Elasticsearch, "
             "achieving sub-second results and enabling a relaunch.",
             "Designed an idempotent webhook platform using Kafka, DDD and CQRS. Load testing dispatched "
             "10,000 outbound calls in under 30 seconds; backpressure protected downstream services.",
             "Implemented Auth0 authentication and fine-grained authorization (FGA) for multi-tenant services.",
-            "Secured sensitive data with tenant-level KMS encryption. Diagnosed redundant encryption work and "
-            "reduced daily KMS calls from more than 10,000 to fewer than 100.",
+            "Secured sensitive data with tenant-level KMS encryption. Reduced redundant KMS calls by 90% "
+            "through more efficient data use and just-in-time access.",
             "Built search capabilities using Lucene-syntax queries and semantic search.",
             "Established API-first standards, documented public APIs, shared libraries and boundary-focused testing patterns.",
             "Applied Axon-based DDD/CQRS and ports and adapters. Used modular monoliths where domain boundaries "
