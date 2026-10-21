@@ -103,7 +103,7 @@ const EngineeringPhilosophy = () => (
             sx={{
               color: 'secondary.main',
               fontWeight: 700,
-              letterSpacing: '0.12em',
+              letterSpacing: 0,
               textTransform: 'uppercase',
             }}
           >
@@ -132,7 +132,7 @@ const EngineeringPhilosophy = () => (
                   p: { xs: 3, md: 3.5 },
                   border: 1,
                   borderColor: 'divider',
-                  borderRadius: 4,
+                  borderRadius: 2,
                   bgcolor: 'background.paper',
                 }}
               >
@@ -141,7 +141,7 @@ const EngineeringPhilosophy = () => (
                     sx={{
                       width: 46,
                       height: 46,
-                      borderRadius: 2.5,
+                      borderRadius: 2,
                       display: 'grid',
                       placeItems: 'center',
                       flexShrink: 0,
@@ -212,18 +212,16 @@ const EngineeringPhilosophy = () => (
         sx={{
           mt: { xs: 6, md: 8 },
           p: { xs: 3, md: 5 },
-          borderRadius: 4,
+          borderRadius: 0,
           bgcolor: 'primary.dark',
           color: 'common.white',
-          backgroundImage:
-            'linear-gradient(135deg, rgba(15,118,110,0.38) 0%, rgba(23,63,104,0) 58%)',
         }}
       >
         <Grid container spacing={{ xs: 4, md: 6 }}>
           <Grid item xs={12} md={4}>
             <Typography
               component="p"
-              sx={{ color: 'secondary.light', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}
+              sx={{ color: '#C2E8DC', fontWeight: 700, letterSpacing: 0, textTransform: 'uppercase' }}
             >
               AI-assisted development
             </Typography>
@@ -246,9 +244,7 @@ const EngineeringPhilosophy = () => (
                       sx={{
                         height: '100%',
                         p: 2.5,
-                        border: '1px solid rgba(255,255,255,0.16)',
-                        borderRadius: 3,
-                        bgcolor: 'rgba(255,255,255,0.06)',
+                        borderTop: '1px solid rgba(255,255,255,0.3)',
                       }}
                     >
                       <Stack direction="row" spacing={1.25} alignItems="center">

@@ -10,12 +10,12 @@ const Skills = () => (
         <Grid item xs={12} md={7}>
           <Typography
             component="p"
-            sx={{ color: 'secondary.main', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}
+            sx={{ color: 'secondary.main', fontWeight: 700, letterSpacing: 0, textTransform: 'uppercase' }}
           >
             Technical skills
           </Typography>
           <Typography variant="h3" component="h2" sx={{ mt: 1.5 }}>
-            Primary tools and platforms
+            Backend depth, end-to-end perspective
           </Typography>
         </Grid>
         <Grid item xs={12} md={5}>
@@ -32,16 +32,16 @@ const Skills = () => (
             <Box
               sx={{
                 height: '100%',
-                p: { xs: 2.5, md: 3 },
-                border: 1,
+                py: 3,
+                pr: 2,
+                borderTop: 1,
                 borderColor: 'divider',
-                borderRadius: 3,
-                bgcolor: 'background.default',
               }}
             >
               <Typography variant="h6" component="h3" sx={{ mb: 2, fontWeight: 700 }}>
                 {group.name}
               </Typography>
+              <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>{group.description}</Typography>
               <Stack direction="row" useFlexGap flexWrap="wrap" spacing={1}>
                 {group.skills.map((skill) => (
                   <Chip key={skill} label={skill} size="small" variant="outlined" />

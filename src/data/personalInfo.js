@@ -1,13 +1,14 @@
 export const personalInfo = {
   name: 'Braiden Miller',
   title: 'Senior Software Engineer II',
+  role: 'Backend Engineer',
+  focus: 'Java / Kotlin / Spring Boot',
   email: 'braidenjamesmiller@gmail.com',
   phone: '(219)743-2686',
   github: 'https://github.com/braidenm',
   linkedin: 'https://www.linkedin.com/in/braiden-miller-64173015/',
-  aboutMe: 'I am a Colorado-based senior software engineer with seven years of professional experience building Java and Kotlin systems. I work closely with product managers, engineers, and dependent teams from problem definition through production support.',
-  heroText: 'Senior software engineer building reliable platforms and products.',
-  heroDescription: 'Seven years building Java and Kotlin systems. I turn complex requirements into well-tested software, safe migrations, and dependable production releases through close collaboration with product and engineering teams.',
+  aboutMe: 'I am a Colorado-based senior software engineer focused on Java, Kotlin, and Spring backend systems. My work spans API contracts, event-driven workflows, third-party integrations, and migrations that keep existing systems running during change.',
+  heroDescription: 'I build APIs and event-driven systems, improve slow services, and move data safely. Hands-on implementation, production ownership, and close collaboration with product and engineering teams.',
 };
 
 export const education = {

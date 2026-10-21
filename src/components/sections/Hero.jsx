@@ -1,130 +1,67 @@
 import React, { useState } from 'react';
-import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material';
+import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import { ArrowForward, Description } from '@mui/icons-material';
-import SectionContainer from '../common/SectionContainer';
 import ResumeViewer from '../Resume/ResumeViewer';
 import { personalInfo } from '../../data/personalInfo';
+import { professionalOutcomes } from '../../data/workHistory';
 
-const outcomes = [
-  { value: '60+ sec → <1 sec', label: 'search response improved during a two-week delivery sprint' },
-  { value: 'Millions', label: 'of records migrated while both systems stayed current through cutover' },
-  { value: '10,000 in <30 sec', label: 'webhook deliveries in load testing with downstream protection' },
-  { value: 'Same day', label: 'production fixes for customer-reported defects when risk allows' },
-];
-
-const ResumePreviewButton = () => {
-  const [open, setOpen] = useState(false);
+const Hero = () => {
+  const [resumeOpen, setResumeOpen] = useState(false);
 
   return (
     <>
-      <Button
-        variant="outlined"
-        size="large"
-        onClick={() => setOpen(true)}
-        startIcon={<Description />}
-        sx={{ color: 'white', borderColor: 'rgba(255,255,255,0.6)', '&:hover': { borderColor: 'white' } }}
-      >
-        Preview resume
-      </Button>
-      <ResumeViewer open={open} onClose={() => setOpen(false)} />
+      <Box component="section" id="home" aria-labelledby="portfolio-name" sx={{ position: 'relative', bgcolor: '#182721', color: 'white' }}>
+        <Box
+          component="img"
+          src="/images/mountain.jpg"
+          alt="Braiden Miller on a winter mountain summit in Colorado"
+          fetchpriority="high"
+          sx={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: '30% 45%' }}
+        />
+        <Box sx={{ position: 'absolute', inset: 0, bgcolor: 'rgba(0,0,0,0.55)' }} />
+        <Container maxWidth="lg" sx={{ position: 'relative', minHeight: 'min(620px, calc(100svh - 64px))', display: 'flex', alignItems: 'center', pt: 14, pb: 7 }}>
+          <Box sx={{ width: { xs: '100%', md: '52%' }, ml: { md: 'auto' } }}>
+            <Typography component="h1" id="portfolio-name" sx={{ fontFamily: 'Montserrat, sans-serif', fontSize: '3rem', fontWeight: 700, lineHeight: 1.15, mb: 2 }}>
+              {personalInfo.name}
+            </Typography>
+            <Typography component="p" sx={{ fontSize: '1.5rem', fontWeight: 700, mb: 1 }}>
+              {personalInfo.role}
+            </Typography>
+            <Typography component="p" sx={{ fontWeight: 700, color: '#C2E8DC', mb: 3 }}>
+              {personalInfo.focus}
+            </Typography>
+            <Typography sx={{ maxWidth: 520, lineHeight: 1.75 }}>
+              {personalInfo.heroDescription}
+            </Typography>
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mt: 4 }}>
+              <Button variant="contained" color="secondary" size="large" href="#work-history" endIcon={<ArrowForward />}>
+                View experience
+              </Button>
+              <Button variant="outlined" size="large" onClick={() => setResumeOpen(true)} startIcon={<Description />} sx={{ color: 'white', borderColor: 'rgba(255,255,255,0.8)', '&:hover': { borderColor: 'white', bgcolor: 'rgba(0,0,0,0.15)' } }}>
+                Preview resume
+              </Button>
+            </Stack>
+          </Box>
+        </Container>
+      </Box>
+      <Box component="section" aria-labelledby="outcomes-heading" sx={{ bgcolor: 'background.default', py: 5, borderBottom: 1, borderColor: 'divider' }}>
+        <Container maxWidth="lg">
+          <Typography component="h2" id="outcomes-heading" variant="subtitle1" sx={{ fontWeight: 700, mb: 3 }}>
+            Selected professional outcomes
+          </Typography>
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(3, minmax(0, 1fr))' }, gap: 4 }}>
+            {professionalOutcomes.map((outcome) => (
+              <Box key={outcome.value}>
+                <Typography component="p" sx={{ fontSize: '1.25rem', fontWeight: 700, color: 'secondary.dark' }}>{outcome.value}</Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>{outcome.label}</Typography>
+              </Box>
+            ))}
+          </Box>
+        </Container>
+      </Box>
+      <ResumeViewer open={resumeOpen} onClose={() => setResumeOpen(false)} />
     </>
   );
 };
-
-const Hero = () => (
-  <SectionContainer
-    id="home"
-    sx={{
-      minHeight: { xs: 'auto', md: '100vh' },
-      display: 'flex',
-      alignItems: 'center',
-      bgcolor: '#0B1F33',
-      background: 'radial-gradient(circle at 15% 20%, rgba(47,111,175,0.34), transparent 38%), #0B1F33',
-      color: 'white',
-      pt: { xs: 14, md: 16 },
-      pb: { xs: 8, md: 10 },
-    }}
-  >
-    <Container maxWidth="lg">
-      <Grid container spacing={{ xs: 5, md: 8 }} alignItems="center">
-        <Grid item xs={12} md={7}>
-          <Typography
-            component="p"
-            sx={{ mb: 2, color: '#9FC6E8', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}
-          >
-            Braiden Miller · Senior Software Engineer
-          </Typography>
-          <Typography
-            variant="h1"
-            sx={{
-              maxWidth: 760,
-              mb: 3,
-              fontSize: { xs: '2.6rem', sm: '3.65rem', md: '4.5rem' },
-              letterSpacing: '-0.045em',
-            }}
-          >
-            {personalInfo.heroText}
-          </Typography>
-          <Typography
-            variant="h6"
-            component="p"
-            sx={{ maxWidth: 720, color: 'rgba(255,255,255,0.78)', lineHeight: 1.65, fontSize: { xs: '1rem', sm: '1.2rem' } }}
-          >
-            {personalInfo.heroDescription}
-          </Typography>
-          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mt: 4 }}>
-            <Button variant="contained" color="secondary" size="large" href="#work-history" endIcon={<ArrowForward />}>
-              View experience
-            </Button>
-            <ResumePreviewButton />
-          </Stack>
-        </Grid>
-        <Grid item xs={12} md={5}>
-          <Box component="figure" sx={{ m: 0, position: 'relative' }}>
-            <Box
-              component="img"
-              src="/images/mountain.jpg"
-              alt="Braiden Miller on a winter mountain summit"
-              sx={{
-                display: 'block',
-                width: '100%',
-                aspectRatio: { xs: '4 / 3', md: '3 / 4' },
-                objectFit: 'cover',
-                objectPosition: { xs: '32% 52%', md: '31% 50%' },
-                borderRadius: 4,
-                border: '1px solid rgba(255,255,255,0.2)',
-                boxShadow: '0 28px 70px rgba(0,0,0,0.38)',
-              }}
-            />
-            <Typography component="figcaption" variant="body2" sx={{ mt: 1.5, color: 'rgba(255,255,255,0.66)' }}>
-              Based in Colorado.
-            </Typography>
-          </Box>
-        </Grid>
-      </Grid>
-
-      <Box
-        aria-label="Selected engineering outcomes"
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' },
-          gap: 2,
-          mt: { xs: 6, md: 8 },
-        }}
-      >
-        {outcomes.map((outcome) => (
-          <Box key={outcome.label} sx={{ p: 2.5, borderTop: '1px solid rgba(255,255,255,0.28)' }}>
-            <Typography component="strong" variant="h4" sx={{ display: 'block', color: '#83D3CB', fontWeight: 700 }}>
-              {outcome.value}
-            </Typography>
-            <Typography variant="body2" sx={{ mt: 0.75, color: 'rgba(255,255,255,0.72)' }}>
-              {outcome.label}
-            </Typography>
-          </Box>
-        ))}
-      </Box>
-    </Container>
-  </SectionContainer>
-);
 
 export default Hero;
