@@ -33,6 +33,10 @@ Mirror the generator, `test_resume.py`, `resume-requirements.txt` and generated 
 and compare source/PDF SHA-256 values across both repos. Each remains independently buildable.
 
 Update the revision query on every public resume link together with its assertions. This revision is
-`v=20261020-1` in `ResumeViewer.jsx` and the app's `BraidenAboutPage.tsx`; the actual PDF path remains compatible.
+`v=20261020-2` in `ResumeViewer.jsx` and the app's `BraidenAboutPage.tsx`; the actual PDF path remains compatible.
 Use separate reviewed PRs, wait for their exact-head checks, and compare deployed PDF hashes after publication.
 The platform owns Spec 103 for this work. No new architecture ADR or domain/API change is introduced.
+
+Owner wording refinement, 2026-10-20: multiple domains extracted; no Elasticsearch cutover duration; redundant KMS
+calls reduced by 90% through efficient data use and just-in-time access. This supersedes the prior KMS count-based
+wording and sprint duration in the public resume and career profile.

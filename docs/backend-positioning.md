@@ -12,7 +12,7 @@ The existing personal mountain photograph is a full-bleed image rather than a sp
 
 - `src/data/personalInfo.js`, `skills.js`, and `workHistory.js`: career background, qualifications, technologies, employer names and dates.
 - Existing `scripts/generate_resume.py`: API-first standards/shared libraries/coaching language corroborates the added experience bullet. The generator and published PDF are unchanged.
-- The migration, search, and webhook outcomes retain their existing scope: millions of records with synchronized systems and rollback; 60+ second search to sub-second in one two-week sprint; 10,000 webhook calls dispatched in under 30 seconds **in load testing** with backpressure, not proof of remote delivery completion time. These are not personal-project traffic claims. Zen Planner uses the corrected display spelling without changing employer tenure or role.
+- The owner refined the published wording on 2026-10-20: multiple domains extracted with millions of records migrated, synchronized systems and rollback; 60+ second search to sub-second with no cutover timeframe; redundant KMS calls reduced by 90% through more efficient data use and just-in-time access. Webhook dispatch remains 10,000 calls in under 30 seconds **in load testing** with backpressure, not remote delivery completion time. These are not personal-project traffic claims. Zen Planner uses the corrected display spelling without changing employer tenure or role.
 - No new employers, dates, tenure, certifications, or numerical results are introduced. No company-specific application or interview information is published.
 
 ## Personal Project Boundaries

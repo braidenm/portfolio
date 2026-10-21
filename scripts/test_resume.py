@@ -23,10 +23,13 @@ class ResumeTest(unittest.TestCase):
             "Auth0", "fine-grained authorization", "tenant-level KMS", "Lucene", "semantic search",
             "Terraform", "GitHub Actions", "AngularJS 1.x", "Angular 2+", "Personal", "B.S., Business Management",
             "Load testing dispatched 10,000 outbound calls in under 30 seconds",
-            "daily KMS calls from more than 10,000 to fewer than 100",
+            "Extracted multiple domains from a monolith into services",
+            "Reduced redundant KMS calls by 90% through more efficient data use and just-in-time access",
         ]:
             self.assertIn(phrase.lower(), text.lower())
         self.assertIsNone(re.search(r"\b(AI|LLM)\b|artificial intelligence|6 years of prior", text, re.I))
+        self.assertNotIn("two-week", text)
+        self.assertNotIn("fewer than 100", text)
         links = []
         for page in pdf.pages:
             self.assertEqual(tuple(float(v) for v in page.mediabox), (0, 0, 612, 792))
