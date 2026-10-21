@@ -11,7 +11,7 @@ const WorkHistory = () => {
         <Container maxWidth="lg">
           <Grid container spacing={{ xs: 3, md: 8 }} alignItems="end" sx={{ mb: 6 }}>
             <Grid item xs={12} md={7}>
-              <Typography component="p" sx={{ color: 'secondary.main', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+              <Typography component="p" sx={{ color: 'secondary.main', fontWeight: 700, letterSpacing: 0, textTransform: 'uppercase' }}>
                 Experience
               </Typography>
               <Typography variant="h3" component="h2" sx={{ mt: 1.5 }}>
@@ -20,8 +20,8 @@ const WorkHistory = () => {
             </Grid>
             <Grid item xs={12} md={5}>
               <Typography color="text.secondary" sx={{ lineHeight: 1.7 }}>
-                Selected work in platform engineering, system migrations, performance, API design,
-                production reliability, and cross-team delivery.
+                Backend engineering in production: reversible migrations, API and vendor integrations,
+                performance improvements, and event-driven workflows delivered with cross-functional teams.
               </Typography>
             </Grid>
           </Grid>

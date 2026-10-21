@@ -1,11 +1,10 @@
 import React from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
-import { Code, Groups, School, WorkspacePremium } from '@mui/icons-material';
+import { Groups, School, WorkspacePremium } from '@mui/icons-material';
 import SectionContainer from '../common/SectionContainer';
 import { education, certifications, experience, personalInfo } from '../../data/personalInfo';
 
 const background = [
-  { icon: Code, value: '7 years', label: 'professional software delivery' },
   { icon: Groups, value: '6 years', label: 'people leadership before engineering' },
   { icon: School, value: 'B.S.', label: `Business Management, ${education.wgu.name}` },
   {
@@ -20,11 +19,11 @@ const AboutMe = () => (
     <Container maxWidth="lg">
       <Grid container spacing={{ xs: 4, md: 8 }} alignItems="flex-start">
         <Grid item xs={12} md={5}>
-          <Typography component="p" sx={{ color: 'secondary.main', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+          <Typography component="p" sx={{ color: 'secondary.main', fontWeight: 700, letterSpacing: 0, textTransform: 'uppercase' }}>
             About
           </Typography>
           <Typography variant="h3" component="h2" sx={{ mt: 1.5, mb: 3, maxWidth: 520 }}>
-            Background and qualifications
+            An engineer who works across boundaries
           </Typography>
         </Grid>
         <Grid item xs={12} md={7}>
@@ -40,13 +39,13 @@ const AboutMe = () => (
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' },
+          gridTemplateColumns: { xs: '1fr', md: 'repeat(3, minmax(0, 1fr))' },
           gap: 2,
           mt: 7,
         }}
       >
         {background.map((item) => (
-          <Box key={item.value} sx={{ p: 3, bgcolor: 'background.paper', borderRadius: 3, border: '1px solid #E1E8F0' }}>
+          <Box key={item.value} sx={{ py: 3, pr: 3, borderTop: 1, borderColor: 'divider' }}>
             <item.icon aria-hidden sx={{ color: 'primary.main', mb: 2 }} />
             <Typography component="strong" variant="h6" sx={{ display: 'block', fontWeight: 700 }}>
               {item.value}

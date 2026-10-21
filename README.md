@@ -1,6 +1,14 @@
 # Braiden Miller - Portfolio
 
-A responsive portfolio for senior software engineering opportunities, focused on collaboration, measurable outcomes, and current platform work.
+A personal portfolio at [braidenmiller.com](https://braidenmiller.com/) focused on backend engineering with Java, Kotlin, and Spring Boot. Professional outcomes and the self-hosted Platform App Lab are presented separately; public technical evidence links lead to the app's API, Axon/CQRS, ports/adapters, and observability documentation.
+
+## Content and Evidence
+
+- Career facts come from `src/data/` and the existing `scripts/generate_resume.py`. Employer names, role dates, and numerical outcomes must not be invented or inferred from personal projects.
+- The first screen highlights backend implementation and collaboration; the following band summarizes reversible migration, search performance, and webhook load-test outcomes.
+- The personal app is a modular monolith with partial ports/adapters adoption, not a claim of universal architectural compliance. Production Kafka, OpenFGA, federated OIDC, and MCP are not enabled.
+- Native iPhone share-sheet acceptance remains a physical-device check, not a guarantee from browser automation.
+- [Positioning record](docs/backend-positioning.md) explains source boundaries, verification, and deferred work. This slice does not change the resume PDF, its versioned URL, contact behavior, dependencies, runtime, or release permissions.
 
 ## Technology Stack
 
@@ -12,7 +20,7 @@ A responsive portfolio for senior software engineering opportunities, focused on
 ## Features
 
 - **Responsive Design** - Mobile-first approach with Material-UI breakpoints
-- **Modern UI** - Clean, card-based layouts with hover effects and transitions
+- **Readable Layout** - Full-bleed personal photo, distinct section boundaries, and unframed technical case studies
 - **Smooth Scrolling** - Native smooth scroll behavior for section navigation
 - **Focused Project Showcase** - One current, inspectable platform case study instead of a wall of older tutorial projects
 - **Resume Viewer** - PDF resume viewer with download option
@@ -38,14 +46,13 @@ src/
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
-- npm or yarn
+- Node.js and npm compatible with the existing Create React App toolchain. The current Docker build pins Node 18; runtime modernization is separate from this content slice.
 
 ### Installation
 
 1. Install dependencies:
 ```bash
-npm install
+npm ci
 ```
 
 2. Start the development server:
@@ -62,6 +69,14 @@ npm run build
 ```
 
 This creates an optimized production build in the `build/` directory.
+
+### Content Regression Tests
+
+```bash
+npm test -- --watchAll=false --runInBand
+```
+
+Tests protect role positioning, professional facts, personal-project limitations, evidence links, public metadata, and the versioned resume URL. They do not replace mobile/desktop layout review or prove native device sharing.
 
 ### Contact Form
 
@@ -86,17 +101,17 @@ docker run -p 8080:80 portfolio
 3. Access at [http://localhost:8080](http://localhost:8080)
 
 ## Deployment and CI/CD
-This project uses GitHub Actions for automated deployment. On every push to the `main` branch:
+`ci.yml` verifies pull requests with a locked dependency install, content tests, and a production build using read-only repository permissions. Run the same checks locally before review. The existing `deploy.yml` remains responsible for pushes to `main`. On every push to the `main` branch:
 1. A Docker image is built and pushed to the GitHub Container Registry (GHCR).
 2. The exact commit-tagged image is sent through Home Lab's governed generic service deployment workflow as the `portfolio` service in the `web` stack.
 
 ## Sections
 
-- **Home/Hero** - Welcome section with introduction
+- **Home/Hero** - Name, backend role, JVM focus, and source-backed professional outcomes
 - **About** - Collaboration style, engineering background, education, and certifications
 - **Experience** - Professional roles and measurable outcomes
 - **Approach** - How product, architecture, delivery, and feedback fit together
-- **Work** - The live Platform App Lab case study
+- **Work** - Personal Platform App Lab and Media Transfer case studies, technical evidence, and implementation limits
 - **Resume** - Preview and download of the generated PDF resume
 - **Contact** - Contact information and social links
 
@@ -125,10 +140,6 @@ Update data files in `src/data/` to modify:
 - Projects
 - Skills
 - Work history
-
-## Legacy Site
-
-The original static HTML site is preserved in the `PersonalSite/` directory for reference.
 
 ## License
 
