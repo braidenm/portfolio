@@ -77,7 +77,13 @@ test('personal projects stay separate from professional outcomes and explain ado
   expect(work.textContent).toContain('Kafka, production OpenFGA, federated OIDC, and MCP are not enabled');
   expect(work.textContent).toContain('physical-device acceptance');
   expect(work.textContent).not.toMatch(/millions|10,000|60\+|error.free|guarantee|Collectors|interview/i);
-  expect(work.querySelectorAll('article')).toHaveLength(2);
+  expect(work.querySelectorAll('article')).toHaveLength(3);
+  const demo = work.querySelector('article[aria-labelledby="joshs-forest-services-title"]');
+  expect(demo.textContent).toContain('Portfolio demo');
+  const demoLink = demo.querySelector('a[href="https://josh.braidenmiller.com/"]');
+  expect(demoLink.textContent).toBe('View demo');
+  expect(demoLink.getAttribute('rel')).toBe('noopener noreferrer');
+  expect(demo.querySelector('a[href*="github.com"]')).toBeNull();
 });
 
 test('technical evidence uses real released developer topic URLs with safe external links', () => {

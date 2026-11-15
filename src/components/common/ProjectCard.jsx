@@ -25,14 +25,18 @@ const ProjectCard = ({ project }) => (
     <Stack direction="row" useFlexGap flexWrap="wrap" spacing={1} sx={{ mt: 3 }}>
       {project.technologies.map((tech) => <Chip key={tech} label={tech} size="small" variant="outlined" />)}
     </Stack>
-    <Stack component="nav" aria-label={`${project.title} technical evidence`} direction="row" useFlexGap flexWrap="wrap" spacing={3} sx={{ my: 3 }}>
-      {project.evidenceLinks.map((link) => (
-        <Link key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" sx={{ py: 0.5 }}>{link.label}</Link>
-      ))}
-    </Stack>
-    <Stack direction="row" useFlexGap flexWrap="wrap" spacing={2}>
-      <Button variant="outlined" startIcon={<GitHub />} href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} on GitHub`}>Source code</Button>
-      <Button variant="contained" startIcon={<Launch />} href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title}`}>Live app</Button>
+    {project.evidenceLinks.length > 0 && (
+      <Stack component="nav" aria-label={`${project.title} technical evidence`} direction="row" useFlexGap flexWrap="wrap" spacing={3} sx={{ mt: 3 }}>
+        {project.evidenceLinks.map((link) => (
+          <Link key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" sx={{ py: 0.5 }}>{link.label}</Link>
+        ))}
+      </Stack>
+    )}
+    <Stack direction="row" useFlexGap flexWrap="wrap" spacing={2} sx={{ mt: 3 }}>
+      {project.githubUrl && (
+        <Button variant="outlined" startIcon={<GitHub />} href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} on GitHub`}>Source code</Button>
+      )}
+      <Button variant="contained" startIcon={<Launch />} href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`${project.liveLabel ?? 'Open'} ${project.title}`}>{project.liveLabel ?? 'Live app'}</Button>
     </Stack>
   </Box>
 );
