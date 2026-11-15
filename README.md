@@ -103,7 +103,7 @@ docker run -p 8080:80 portfolio
 ## Deployment and CI/CD
 `ci.yml` verifies pull requests with a locked dependency install, content tests, and a production build using read-only repository permissions. Run the same checks locally before review. The existing `deploy.yml` remains responsible for pushes to `main`. On every push to the `main` branch:
 1. A Docker image is built and pushed to the GitHub Container Registry (GHCR).
-2. The exact commit-tagged image is sent through Home Lab's governed generic service deployment workflow as the `portfolio` service in the `web` stack.
+2. A release updates the image digest in Home Lab Infrastructure. Argo CD syncs the revision to K3s, where Argo Rollouts keeps it in preview until promotion.
 
 ## Sections
 
