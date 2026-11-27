@@ -86,8 +86,10 @@ def build_resume(output=OUTPUT):
         ),
         section("Professional Experience", styles),
         *role("Senior Software Engineer II", "Pax8", "2022 - Present", [
+            "Led technical planning with product and engineering teams, coached engineers, and delivered planned "
+            "releases on schedule through phased work and explicit dependencies.",
             "Extracted multiple domains from a monolith into services and migrated millions of records while keeping "
-            "old and new systems synchronized; verified parity and retained tested rollback paths through cutover.",
+            "old and new systems synchronized; verified parity and retained a tested path back to the original application.",
             "Replaced a search path taking more than 60 seconds with Elasticsearch, "
             "achieving sub-second results and enabling a relaunch.",
             "Designed an idempotent webhook platform using Kafka, DDD and CQRS. Load testing dispatched "
@@ -99,10 +101,8 @@ def build_resume(output=OUTPUT):
             "Established API-first standards, documented public APIs, shared libraries and boundary-focused testing patterns.",
             "Applied Axon-based DDD/CQRS and ports and adapters. Used modular monoliths where domain boundaries "
             "were unclear, weighing service extraction against business needs and operational complexity.",
-            "Owned production behavior through distributed traces, metrics, SLOs and alerting; improved diagnosis "
-            "and resolution of customer-reported defects.",
-            "Led technical planning and coached engineers across product and dependent teams, making "
-            "architecture tradeoffs, delivery dependencies and technical debt explicit.",
+            "Established repeatable CI/CD, integration testing and observability patterns that support same-day "
+            "production fixes for customer-reported defects. Used traces, metrics, SLOs and alerting to diagnose issues.",
         ], styles),
         PageBreak(),
         section("Professional Experience Continued", styles),
@@ -135,7 +135,7 @@ def build_resume(output=OUTPUT):
             ),
             Paragraph(
                 '<link href="https://app.braidenmiller.com/about/developer/overview" color="#155B75">Architecture and APIs</link> | '
-                '<link href="https://github.com/braidenm/platform-demo" color="#155B75">Source code</link>', styles["skill"],
+                '<link href="https://app.braidenmiller.com/about/developer/walkthroughs/media-removal" color="#155B75">Feature walkthrough</link>', styles["skill"],
             ),
         ]),
         section("Education and Certifications", styles),

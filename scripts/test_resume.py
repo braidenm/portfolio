@@ -24,6 +24,9 @@ class ResumeTest(unittest.TestCase):
             "Terraform", "GitHub Actions", "AngularJS 1.x", "Angular 2+", "Personal", "B.S., Business Management",
             "Load testing dispatched 10,000 outbound calls in under 30 seconds",
             "Extracted multiple domains from a monolith into services",
+            "delivered planned releases on schedule",
+            "patterns that support same-day production fixes",
+            "tested path back to the original application",
             "Reduced redundant KMS calls by 90% through more efficient data use and just-in-time access",
         ]:
             self.assertIn(phrase.lower(), text.lower())
@@ -40,7 +43,8 @@ class ResumeTest(unittest.TestCase):
                 self.assertTrue(0 <= left < right <= 612 and 0 <= bottom < top <= 792)
         self.assertIn("mailto:braidenjamesmiller@gmail.com", links)
         self.assertIn("https://app.braidenmiller.com/about/developer/overview", links)
-        self.assertIn("https://github.com/braidenm/platform-demo", links)
+        self.assertIn("https://app.braidenmiller.com/about/developer/walkthroughs/media-removal", links)
+        self.assertNotIn("https://github.com/braidenm/platform-demo", links)
 
 
 if __name__ == "__main__":

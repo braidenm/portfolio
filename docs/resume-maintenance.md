@@ -33,10 +33,20 @@ Mirror the generator, `test_resume.py`, `resume-requirements.txt` and generated 
 and compare source/PDF SHA-256 values across both repos. Each remains independently buildable.
 
 Update the revision query on every public resume link together with its assertions. This revision is
-`v=20261020-2` in `ResumeViewer.jsx` and the app's `BraidenAboutPage.tsx`; the actual PDF path remains compatible.
+`v=20261127-1` in `ResumeViewer.jsx` and the app's `BraidenAboutPage.tsx`; the actual PDF path remains compatible.
 Use separate reviewed PRs, wait for their exact-head checks, and compare deployed PDF hashes after publication.
 The platform owns Spec 103 for this work. No new architecture ADR or domain/API change is introduced.
 
 Owner wording refinement, 2026-10-20: multiple domains extracted; no Elasticsearch cutover duration; redundant KMS
 calls reduced by 90% through efficient data use and just-in-time access. This supersedes the prior KMS count-based
 wording and sprint duration in the public resume and career profile.
+
+Hiring-story refinement, 2026-11-27: lead with product/engineering planning and planned releases delivered on
+schedule. Explain synchronized domain extraction, verified parity and the tested path back to the original app.
+Describe repeatable delivery patterns supporting same-day customer fixes without promising an SLA or that
+every incident is resolved the same day. Retain roles/dates, numerical results and load-test scope. The project
+evidence link now opens the public media-removal walkthrough; the source repository is private.
+
+Generate and verify on the pinned Linux dependency set used by CI. Windows zlib-ng can produce different
+compressed bytes despite equal decoded page streams/text/metadata; never weaken the exact regeneration
+assertion to accept that difference. Compare artifact hashes across both repositories and both public endpoints.
