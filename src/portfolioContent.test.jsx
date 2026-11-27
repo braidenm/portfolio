@@ -134,14 +134,14 @@ test('public metadata matches backend positioning without private application co
 
 test('the resume preview and download use the current versioned PDF URL', () => {
   const source = readFileSync(path.join(process.cwd(), 'src/components/Resume/ResumeViewer.jsx'), 'utf8');
-  expect(source).toContain("const RESUME_URL = '/resume/Braiden_Miller.pdf?v=20261020-2'");
+  expect(source).toContain("const RESUME_URL = '/resume/Braiden_Miller.pdf?v=20261127-1'");
   expect(source).toContain('href={RESUME_URL}');
   expect(source).toContain('src={`${RESUME_URL}#zoom=page-width`}');
   const hero = renderSection(<Hero />);
   const preview = [...hero.querySelectorAll('button')].find((button) => button.textContent.includes('Preview resume'));
   act(() => preview.click());
-  expect(document.querySelector('iframe').getAttribute('src')).toBe('/resume/Braiden_Miller.pdf?v=20261020-2#zoom=page-width');
-  expect(document.querySelector('a[download]').getAttribute('href')).toBe('/resume/Braiden_Miller.pdf?v=20261020-2');
+  expect(document.querySelector('iframe').getAttribute('src')).toBe('/resume/Braiden_Miller.pdf?v=20261127-1#zoom=page-width');
+  expect(document.querySelector('a[download]').getAttribute('href')).toBe('/resume/Braiden_Miller.pdf?v=20261127-1');
   act(() => document.querySelector('[aria-label="Close resume preview"]').click());
 });
 
@@ -193,7 +193,7 @@ test('resume preview always offers an independent PDF viewer and download', () =
   const preview = [...hero.querySelectorAll('button')].find((button) => button.textContent.includes('Preview resume'));
   act(() => preview.click());
   const open = document.querySelector('a[aria-label="Open resume PDF in a new tab"]');
-  expect(open.getAttribute('href')).toBe('/resume/Braiden_Miller.pdf?v=20261020-2');
+  expect(open.getAttribute('href')).toBe('/resume/Braiden_Miller.pdf?v=20261127-1');
   expect(open.getAttribute('target')).toBe('_blank');
   expect(open.getAttribute('rel')).toBe('noopener noreferrer');
   expect(document.querySelector('[role="dialog"]').getAttribute('aria-labelledby')).toBe('resume-preview-title');

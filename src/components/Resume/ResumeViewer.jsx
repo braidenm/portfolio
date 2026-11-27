@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Button, Dialog, DialogContent, IconButton, Stack, Typography } from '@mui/material';
 import { Close, Download, OpenInNew } from '@mui/icons-material';
 
-const RESUME_URL = '/resume/Braiden_Miller.pdf?v=20261020-2';
+const RESUME_URL = '/resume/Braiden_Miller.pdf?v=20261127-1';
 
 const ResumeViewer = ({ open, onClose }) => (
   <Dialog open={open} onClose={onClose} aria-labelledby="resume-preview-title" maxWidth="lg" fullWidth
