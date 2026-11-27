@@ -14,14 +14,13 @@ const Projects = () => (
             Personal engineering work
           </Typography>
           <Typography variant="h3" component="h2" sx={{ mt: 1.5 }}>
-            Inspect the implementation
+            Projects you can explore
           </Typography>
         </Grid>
         <Grid item xs={12} md={5}>
           <Typography color="text.secondary" sx={{ lineHeight: 1.7 }}>
-            Separate from my professional work, I build and operate Platform App Lab. Media Transfer
-            is its photo and video sharing application. The source, API contracts, and architecture
-            decisions are public, including the boundaries still being improved.
+            Separate from my professional work, these projects show how I design, build, and operate
+            software. Try the apps, follow one feature, or read the technical guides.
           </Typography>
         </Grid>
       </Grid>

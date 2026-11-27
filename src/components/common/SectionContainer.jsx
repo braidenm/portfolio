@@ -12,7 +12,7 @@ const SectionContainer = ({ id, children, sx = {}, bgImage, bgOpacity = 0.5, dar
     }
   }, [bgImage]);
 
-  const overlayColor = darkOverlay 
+  const overlayColor = darkOverlay
     ? 'rgba(0, 0, 0, 0.6)' // Darker overlay for better contrast
     : 'rgba(255, 255, 255, 0.6)'; // Slightly more opaque light overlay
 
@@ -22,7 +22,7 @@ const SectionContainer = ({ id, children, sx = {}, bgImage, bgOpacity = 0.5, dar
       component="section"
       sx={{
         py: { xs: 6, md: 10 },
-        px: { xs: 2, sm: 3, md: 4 },
+        px: 0,
         scrollMarginTop: { xs: '72px', md: '80px' },
         position: 'relative',
         overflow: 'hidden',

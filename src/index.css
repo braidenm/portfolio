@@ -18,11 +18,3 @@ code {
     monospace;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-.loader-hidden {
-  opacity: 0;
-  visibility: hidden;
-}
