@@ -16,7 +16,7 @@ const ScrollToTop = () => {
   const handleClick = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
     });
   };
 
@@ -28,6 +28,8 @@ const ScrollToTop = () => {
         aria-label="scroll back to top"
         onClick={handleClick}
         sx={{
+          width: 44,
+          height: 44,
           position: 'fixed',
           bottom: 24,
           right: 24,

@@ -2,12 +2,29 @@
   text-align: center;
 }
 
-/* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
 }
 
-/* Ensure proper spacing for sections */
 section {
   scroll-margin-top: 80px;
+}
+
+.portfolio-details > summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 12px 0;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.portfolio-details > summary:focus-visible {
+  outline: 3px solid #2f6faf;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

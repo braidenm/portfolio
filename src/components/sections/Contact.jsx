@@ -1,306 +1,39 @@
-import React, { useState } from 'react';
-import {
-  Container,
-  Typography,
-  Grid,
-  Box,
-  Link,
-  Card,
-  CardContent,
-  TextField,
-  Button,
-  Alert,
-  Snackbar,
-} from '@mui/material';
-import { Email, Phone, GitHub, LinkedIn, Send } from '@mui/icons-material';
+import React from 'react';
+import { Box, Button, Container, Grid, Link, Stack, Typography } from '@mui/material';
+import { Email, GitHub, LinkedIn } from '@mui/icons-material';
 import SectionContainer from '../common/SectionContainer';
 import { personalInfo } from '../../data/personalInfo';
 
-const CONTACT_ENDPOINT = process.env.REACT_APP_CONTACT_ENDPOINT || '/v1/portfolio/contact';
-
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-    website: '',
-  });
-  const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState({ type: '', message: '' });
-  const [openSnackbar, setOpenSnackbar] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: '' }));
-    }
-  };
-
-  const validate = () => {
-    const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
-    }
-    if (!formData.subject.trim()) newErrors.subject = 'Subject is required';
-    if (!formData.message.trim()) newErrors.message = 'Message is required';
-    return newErrors;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const newErrors = validate();
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch(CONTACT_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        let errorMessage = 'Sorry, your message could not be sent. Please try again.';
-        try {
-          const payload = await response.json();
-          errorMessage = payload?.error?.message || payload?.message || errorMessage;
-        } catch {
-          // Keep the user-friendly fallback when the server returns no JSON body.
-        }
-        throw new Error(errorMessage);
-      }
-
-      setStatus({
-        type: 'success',
-        message: 'Thank you! Your message has been sent successfully.',
-      });
-      setOpenSnackbar(true);
-      setFormData({ name: '', email: '', subject: '', message: '', website: '' });
-    } catch (error) {
-      setStatus({
-        type: 'error',
-        message: error.message,
-      });
-      setOpenSnackbar(true);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleCloseSnackbar = () => {
-    setOpenSnackbar(false);
-  };
-
-  return (
-    <SectionContainer 
-      id="contact" 
-      sx={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: '#0B1F33', color: 'white' }}
-    >
-      <Container>
-        <Typography variant="h3" component="h2" align="center" gutterBottom sx={{ mb: 6 }}>
-          Contact
-        </Typography>
-        <Typography
-          variant="body1"
-          align="center"
-          sx={{ mt: -4, mb: 6, maxWidth: 760, mx: 'auto', color: 'rgba(255,255,255,0.75)' }}
-        >
-          I&apos;m interested in senior software engineering roles focused on platform development,
-          product collaboration, and reliable delivery.
-        </Typography>
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={5}>
-            <Box component="form" onSubmit={handleSubmit} noValidate>
-              <Grid container spacing={2}>
-                <Box
-                  component="input"
-                  type="text"
-                  name="website"
-                  value={formData.website}
-                  onChange={handleChange}
-                  tabIndex={-1}
-                  autoComplete="off"
-                  aria-hidden="true"
-                  sx={{ display: 'none' }}
-                />
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Your Name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    error={!!errors.name}
-                    helperText={errors.name}
-                    required
-                    sx={{ bgcolor: 'white', borderRadius: 1 }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Your Email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    error={!!errors.email}
-                    helperText={errors.email}
-                    required
-                    sx={{ bgcolor: 'white', borderRadius: 1 }}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    error={!!errors.subject}
-                    helperText={errors.subject}
-                    required
-                    sx={{ bgcolor: 'white', borderRadius: 1 }}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Message"
-                    name="message"
-                    multiline
-                    rows={4}
-                    value={formData.message}
-                    onChange={handleChange}
-                    error={!!errors.message}
-                    helperText={errors.message}
-                    required
-                    sx={{ bgcolor: 'white', borderRadius: 1 }}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    fullWidth
-                    size="large"
-                    disabled={isSubmitting}
-                    endIcon={<Send />}
-                    sx={{ py: 1.5 }}
-                  >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                  </Button>
-                </Grid>
-              </Grid>
-            </Box>
-          </Grid>
-
-          <Grid item xs={12} md={7}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <Card sx={{ height: '100%' }}>
-                  <CardContent sx={{ textAlign: 'center' }}>
-                    <Box sx={{ mb: 2 }}>
-                      <GitHub sx={{ fontSize: 48, color: 'primary.main' }} />
-                    </Box>
-                    <Typography variant="h6" gutterBottom>
-                      Profiles
-                    </Typography>
-                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1, mt: 1 }}>
-                      <Link
-                        href={personalInfo.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="GitHub Profile"
-                        sx={{ display: 'flex', alignItems: 'center', gap: 1, textDecoration: 'none' }}
-                      >
-                        <GitHub fontSize="small" />
-                        <Typography variant="body2">GitHub</Typography>
-                      </Link>
-                      <Link
-                        href={personalInfo.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="LinkedIn Profile"
-                        sx={{ display: 'flex', alignItems: 'center', gap: 1, textDecoration: 'none' }}
-                      >
-                        <LinkedIn fontSize="small" />
-                        <Typography variant="body2">LinkedIn</Typography>
-                      </Link>
-                    </Box>
-                  </CardContent>
-                </Card>
-              </Grid>
-
-              <Grid item xs={12} sm={6}>
-                <Card sx={{ height: '100%' }}>
-                  <CardContent sx={{ textAlign: 'center' }}>
-                    <Box sx={{ mb: 2 }}>
-                      <Phone sx={{ fontSize: 48, color: 'primary.main' }} />
-                    </Box>
-                    <Typography variant="h6" gutterBottom>
-                      Phone
-                    </Typography>
-                    <Link href={`tel:${personalInfo.phone}`} sx={{ textDecoration: 'none' }} aria-label={`Call ${personalInfo.phone}`}>
-                      <Typography variant="body1" color="primary">
-                        {personalInfo.phone}
-                      </Typography>
-                    </Link>
-                  </CardContent>
-                </Card>
-              </Grid>
-
-              <Grid item xs={12}>
-                <Card>
-                  <CardContent sx={{ textAlign: 'center' }}>
-                    <Box sx={{ mb: 2 }}>
-                      <Email sx={{ fontSize: 48, color: 'primary.main' }} />
-                    </Box>
-                    <Typography variant="h6" gutterBottom>
-                      Email
-                    </Typography>
-                    <Link
-                      href={`mailto:${personalInfo.email}`}
-                      sx={{ textDecoration: 'none' }}
-                      aria-label={`Email ${personalInfo.email}`}
-                    >
-                      <Typography variant="body1" color="primary">
-                        {personalInfo.email}
-                      </Typography>
-                    </Link>
-                  </CardContent>
-                </Card>
-              </Grid>
-            </Grid>
-          </Grid>
+const Contact = () => (
+  <SectionContainer id="contact" sx={{ bgcolor: '#0B1F33', color: 'white' }}>
+    <Container maxWidth="lg">
+      <Typography variant="h3" component="h2" sx={{ mb: 2 }}>Get in touch</Typography>
+      <Typography sx={{ maxWidth: 760, mb: 3, color: 'rgba(255,255,255,0.85)' }}>
+        I&apos;m interested in senior software engineering roles involving product collaboration
+        and reliable delivery.
+      </Typography>
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mb: 5, alignItems: { sm: 'flex-start' } }}>
+        <Button href={'mailto:' + personalInfo.email} variant="contained" color="secondary" size="large" startIcon={<Email />}>Email me</Button>
+        <Button href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" variant="outlined" size="large" startIcon={<LinkedIn />} sx={{ color: 'white', borderColor: 'rgba(255,255,255,0.7)' }}>Connect on LinkedIn</Button>
+      </Stack>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6} md={5}>
+          <Typography component="h3" variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>Email</Typography>
+          <Link href={'mailto:' + personalInfo.email} color="inherit" sx={{ display: 'inline-block', py: 1, overflowWrap: 'anywhere' }}>{personalInfo.email}</Link>
         </Grid>
-      </Container>
-      
-      <Snackbar
-        open={openSnackbar}
-        autoHideDuration={6000}
-        onClose={handleCloseSnackbar}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-      >
-        <Alert onClose={handleCloseSnackbar} severity={status.type} sx={{ width: '100%' }}>
-          {status.message}
-        </Alert>
-      </Snackbar>
-    </SectionContainer>
-  );
-};
+        <Grid item xs={12} sm={6} md={3}>
+          <Typography component="h3" variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>Phone</Typography>
+          <Link href={'tel:' + personalInfo.phone} color="inherit" sx={{ display: 'inline-block', py: 1 }}>{personalInfo.phone}</Link>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Typography component="h3" variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>Source and projects</Typography>
+          <Box>
+            <Link href={personalInfo.github} target="_blank" rel="noopener noreferrer" color="inherit" sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, py: 1 }}><GitHub fontSize="small" />GitHub profile</Link>
+          </Box>
+        </Grid>
+      </Grid>
+    </Container>
+  </SectionContainer>
+);
 
 export default Contact;

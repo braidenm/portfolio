@@ -23,7 +23,7 @@ const AboutMe = () => (
             About
           </Typography>
           <Typography variant="h3" component="h2" sx={{ mt: 1.5, mb: 3, maxWidth: 520 }}>
-            An engineer who works across boundaries
+            Background and experience
           </Typography>
         </Grid>
         <Grid item xs={12} md={7}>

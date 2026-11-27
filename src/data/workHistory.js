@@ -1,7 +1,7 @@
 export const professionalOutcomes = [
-  { value: 'Millions of records', label: 'Migrated with synchronized systems, parity checks, and a rollback path.' },
-  { value: '60+ seconds to sub-second', label: 'Search response time improved with Elasticsearch.' },
-  { value: '10,000 calls dispatched', label: 'In under 30 seconds during a webhook load test. Backpressure protected downstream services.' },
+  { value: 'Planned releases delivered', label: 'Aligned product and engineering teams around phased plans and clear dependencies.' },
+  { value: 'Domains moved out of a monolith', label: 'Kept old and new systems synchronized, checked parity, and retained a safe cutback path.' },
+  { value: 'Slow searches improved', label: 'Replaced a 60+ second search path with sub-second Elasticsearch results.' },
 ];
 
 export const workHistory = [
@@ -11,12 +11,12 @@ export const workHistory = [
     position: 'Senior Software Engineer II',
     duration: '2022 - Present',
     description: [
-      'Extracted multiple domains from a monolith into services and migrated millions of records. Kept old and new systems synchronized during rollout, verified parity, and retained tested rollback paths through cutover.',
+      'Delivered platform releases on schedule by aligning product, architecture, analytics, frontend, backend, and partner teams around phased plans and explicit dependencies.',
+      'Extracted multiple domains from a monolith and migrated millions of records. Kept both systems synchronized, verified parity, and retained tested cutback paths through rollout.',
       'Replaced a search path that took more than 60 seconds with Elasticsearch, producing sub-second results.',
       'Introduced CI/CD, integration testing, and observability patterns that support same-day production fixes for customer-reported defects.',
       'Designed and load-tested a DDD/CQRS webhook platform that dispatched 10,000 calls in under 30 seconds while applying backpressure to protect downstream services.',
       'Created API-first standards, shared libraries, and testing patterns, with practical coaching to help frontend, backend, analytics, and partner teams deliver against clearer contracts.',
-      'Delivered platform releases on schedule by aligning product, architecture, analytics, frontend, backend, and partner teams around phased plans and explicit dependencies.',
       'Delivered Azure AI Foundry provisioning and LLM gateway foundations while coordinating vendor and internal platform dependencies.',
     ],
     technologies: ['Java', 'Kotlin', 'Spring Boot', 'Kafka', 'Elasticsearch', 'Axon', 'PostgreSQL', 'MongoDB', 'Azure AI'],

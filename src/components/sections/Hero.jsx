@@ -19,7 +19,7 @@ const Hero = () => {
           sx={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: '30% 45%' }}
         />
         <Box sx={{ position: 'absolute', inset: 0, bgcolor: 'rgba(0,0,0,0.55)' }} />
-        <Container maxWidth="lg" sx={{ position: 'relative', minHeight: 'min(620px, calc(100svh - 64px))', display: 'flex', alignItems: 'center', pt: 14, pb: 7 }}>
+        <Container maxWidth="lg" sx={{ position: 'relative', minHeight: 'min(560px, calc(100svh - 64px))', display: 'flex', alignItems: 'center', pt: 14, pb: 7 }}>
           <Box sx={{ width: { xs: '100%', md: '52%' }, ml: { md: 'auto' } }}>
             <Typography component="h1" id="portfolio-name" sx={{ fontFamily: 'Montserrat, sans-serif', fontSize: '3rem', fontWeight: 700, lineHeight: 1.15, mb: 2 }}>
               {personalInfo.name}
